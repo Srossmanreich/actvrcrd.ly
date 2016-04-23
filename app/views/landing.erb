@@ -1,0 +1,106 @@
+<style> body {
+background-image: url(images/unknown.jpg);
+background-size: 100% 800px;
+  }
+
+</style>
+
+
+  <nav>
+    <div class="nav-wrapper extend">
+      <form>
+        <div class="input-field deep-orange accent-2">
+          <input placeholder="Search for tag.." id="search" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+
+<img class="center-align" src="images/scumtastic.png" height="400" width="800"/>
+<!-- Modal Trigger -->
+<a id="left" class="modal-trigger waves-effect waves-light btn deep-orange accent-3 hover" href="#modal1"><i class="material-icons left">note_add</i>Sign Up</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Sign Up!</h4>
+    <div class="row">
+      <form method="POST" action="/create" class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input length="20" id="first_name" type="text" class="validate" name="first_name" required>
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input length="20" id="last_name" type="text" class="validate" name="last_name" required>
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input length="20" id="username" type="text" class="validate" name="username"required>
+            <label for="username">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input length="20" id="password" type="password" class="validate" name="password" required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input length="20" id="email" type="email" class="validate" name="email" required>
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="modal-footer">
+          <button class="btn waves-effect waves-light deep-orange" type="submit" name="action">Submit
+            <i class="material-icons right"></i>
+          </button>
+        </div>
+      </form>
+  </div>
+</div>
+</div>
+
+
+<!-- Modal Trigger -->
+<a id="right" class="modal-trigger waves-effect waves-light btn deep-orange accent-3 valign hover" href="#modal2">Log in<i class="material-icons right">cloud</i></a>
+
+<!-- Modal Structure -->
+<div id="modal2" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Log in!</h4>
+    <div class="row">
+      <form method="POST" action="/login" class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input length="20" id="username" type="text" class="validate" name="username" required>
+            <label for="username">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input length="20" id="password" type="password" class="validate" name="password" required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn waves-effect waves-light deep-orange" type="submit" name="action">Submit
+        <i class="material-icons right">cloud</i>
+      </button>
+    </div>
+  </div>
+</form>
+
+
+</div>

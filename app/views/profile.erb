@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="navbar-fixed">
+	   <nav>
+	     <div class="nav-wrapper deep-orange accent-2">
+	       <a href="/posts" class="brand-logo">-->Scum Overflow</a>
+	       <ul class="right hide-on-med-and-down">
+	         <li><a href="/posts<%=@id%>">Profile</a></li>
+	         <li><a href="/logout">Logout</a></li>
+	       </ul>
+	     </div>
+	   </nav>
+	</div>
+
+	<h2><%=@user.username%></h2>
+
+	<div class="sbpete"><img src='../images/sbpete.png'></div>
+
+	<div class="question-list" id="question-list">
+	  <% @questions.each do |question| %>
+	  <div class="collection deep-orange accent-3">
+	    <a href="/posts/<%= question.id %>" class="collection-item"><%= question.title %></a>
+	  </div>
+	  <% end %>
+	</div>
+
+
+</div>
