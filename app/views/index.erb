@@ -24,6 +24,7 @@
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Create a new table</h4>
+      <h6>Note: all tables will come with ID by default</h6>
       <div class="row">
         <form class="col s12 create-table-form">
           <br>
@@ -38,11 +39,22 @@
             <div class="row">
               <div class="input-field col s6">
                 <input length="40" id="title" type="text" name="title" required>
-                <label for="title">ID</label>
+                <label for="title">Column Name</label>
               </div>
-              <div class="input-field col s6">
-                <input length="40" id="content" type="text"  name="content" required>
-                <label for="content">Content</label>
+              
+              <div>
+
+                  <!-- Dropdown Trigger -->
+                  <a class='dropdown-button red btn col s3' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!</a>
+
+                  <!-- Dropdown Structure -->
+                  <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!">Integer</a></li>
+                    <li><a href="#!">Text</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!">Datetime</a></li>
+                  </ul>
+
               </div>
             </div>
           <p><a class="add-col" href="#">Add a column</a></p>

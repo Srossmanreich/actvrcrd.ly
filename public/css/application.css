@@ -19,3 +19,7 @@
   margin: 10px 350px;
 }
 
+.dropdown-button{
+  display: inline-block !important;
+}
+
