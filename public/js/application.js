@@ -33,14 +33,18 @@ $(document).ready(function() {
 		var input = $('.addtable').serialize();
 		
 		$(this).parent().parent().hide();
-
-		console.log(input);
 		
 		var request = $.ajax({
 	      method: "POST",
 	      url: link,
 	      data: input + (`&colcount=${num-1}`)
 	    })
+
+	    request.done(function(data) {
+      		console.log(data);
+    })
+
+
 	})
 
 });
