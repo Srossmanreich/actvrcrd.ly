@@ -20,21 +20,21 @@
   <div class="moretables">
     <form class="addtable" method="POST" action="/new">
       <p>Table name (e.g., Users, Votes --> keep it simple and keep it plural):</p>
+      <p><input type="text" name="tablename"></p>
+      <p>NOTE: an ID (integer) will automatically be generated with each table</p>
+      <p><input class="submit-tables" type="submit" value="Submit Table"></p>
       <div class="morecolumns">
-        <p><input type="text" name="tablename"></p>
-        <p>NOTE: an ID (integer) will automatically be generated with each table</p>
-        <p><input class="submit-tables" type="submit" value="Submit Table"></p>
         <p>Enter a column header and type:</p>
         <input type="text" name="header"> 
-        <select>
+        <select name="type">
           <option value="integer">Integer</option>
           <option value="text">Text</option>
           <option value="datetime">Datetime</option>
         </select>
-        <label><input type="checkbox" id="foreignkey" value="foreignkey">foreign key?</label>
-        <label><input type="checkbox" id="presence" value="presence">presence required?</label>
-        <label><input type="checkbox" id="unique" value="unique">unique required?</label>
-        <label><input type="checkbox" id="poly" value="poly">polymorphic true?</label>
+        <label><input type="checkbox" id="foreignkey" value="1" name="foreignkey?">foreign key?</label>
+        <label><input type="checkbox" id="presence" value="1" name="presence?">presence required?</label>
+        <label><input type="checkbox" id="unique" value="1" name="unique?">unique required?</label>
+        <label><input type="checkbox" id="poly" value="1" name="polymorphic?">polymorphic true?</label>
       </div>
       <br>
       <p><a class="another-col" href="#">Add another column</a></p>

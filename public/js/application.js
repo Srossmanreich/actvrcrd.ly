@@ -25,7 +25,9 @@ $(document).ready(function() {
 	})
 
 	$('.submit-tables').click(function(e){
-		
+		e.preventDefault();
+		var input = $('.addtable').serializeArray();
+		console.log(input);
 	})
 
 });
