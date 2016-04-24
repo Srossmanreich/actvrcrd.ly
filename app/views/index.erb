@@ -17,12 +17,24 @@
   <h2>Design your schema</h2>
   <p class="center-align">Fill out the form below to create your first table:</p>
 
-  <form class="addtable">
+  <form class="addtable" method="POST" action="/">
     <p>Table name (e.g., Users, Votes --> keep it simple and keep it plural):</p>
     <p><input type="text" name="tablename"></p>
     <p>NOTE: an ID (integer) will automatically be generated with each table</p>
-    <p>Enter a column header:</p>
-    <input type="text" name="header">
+    <p><input type="submit" value="Submit Table"></p>
+    <p>Enter a column header and type:</p>
+    <input type="text" name="header"> 
+    <select>
+      <option value="integer">Integer</option>
+      <option value="text">Text</option>
+      <option value="datetime">Datetime</option>
+    </select>
+    <label><input type="checkbox" id="foreignkey" value="foreignkey">foreign key?</label>
+    <label><input type="checkbox" id="presence" value="presence">presence required?</label>
+    <label><input type="checkbox" id="unique" value="unique">unique required?</label>
+    <label><input type="checkbox" id="poly" value="poly">polymorphic true?</label>
+    <br>
+    <p><a class="another-col" href="#">Add another column</a></p>
   </form>
         
 
