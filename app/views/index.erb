@@ -9,67 +9,22 @@
   <h3> We give you your Ruby code for your models and migrations in Active Record</h3>
   <p>To get started, click the button below and build your first schema. Once you submit it, we will give you your code!</p>
 
-  <a class="waves-effect waves-light red btn get-started">Get Started</a>
+  <a class="get-started btn">Get Started</a>
 
 </div>
 
 <div class="schema-explanation">
   <h2>Design your schema</h2>
-  <p>Press the button below to create your first table:</p>
+  <p class="center-align">Fill out the form below to create your first table:</p>
 
-    <!-- Modal Trigger -->
-  <a class="waves-effect waves-light red btn modal-trigger" href="#modal1">Create a new table</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Create a new table</h4>
-      <h6>Note: all tables will come with ID by default</h6>
-      <div class="row">
-        <form class="col s12 create-table-form">
-          <br>
-            <div class="row">
-              <div class="input-field col s12">
-                <label for="table_name">Table Name (e.g., Users, Votes, Shirts -> use plural form)</label>
-                <br>
-                <input id="table_name" type="text" class="validate">
-              </div>
-            </div>
-            <p class="left-align-cols">Columns:</p>
-            <div class="row">
-              <div class="input-field col s6">
-                <input length="40" id="title" type="text" name="title" required>
-                <label for="title">Column Name</label>
-              </div>
-            </div>
-              
-            <div>
-
-                <!-- Dropdown Trigger -->
-                <a class='dropdown-button red btn col s4' data-beloworigin="true" href='#' data-activates='dropdown1'>Select Type</a>
-
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                  <li><a class="dropdown-item" href="#!">Integer</a></li>
-                  <li><a class="dropdown-item" href="#!">Text</a></li>
-                  <li class="divider"></li>
-                  <li><a class="dropdown-item" href="#!">Datetime</a></li>
-                </ul>
-
-            </div>
-            <br>
-            <p>
-            <div class="add-cols">
-              <a class="add-col" href="#">Add a new column</a>
-            </div>
-            </p>
-        </form>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+  <form class="addtable">
+    <p>Table name (e.g., Users, Votes --> keep it simple and keep it plural):</p>
+    <p><input type="text" name="tablename"></p>
+    <p>NOTE: an ID (integer) will automatically be generated with each table</p>
+    <p>Enter a column header:</p>
+    <input type="text" name="header">
+  </form>
+        
 
 </div>
 
