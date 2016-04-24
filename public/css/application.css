@@ -1,3 +1,9 @@
+.left-align-cols {
+  text-align: left;
+  margin: 0 !important;
+  justify-content: flex-start !important;
+}
+
 .home-explanation h2, .home-explanation h3, .home-explanation p, .schema-explanation h2, .schema-explanation p {
   display: flex;
   align-items: center;
@@ -12,6 +18,4 @@
   justify-content: center;
   margin: 10px 350px;
 }
-
-
 

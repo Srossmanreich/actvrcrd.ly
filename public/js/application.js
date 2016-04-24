@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	window.onbeforeunload = function() {
-  	return "You are attempting to leave this page.";}
+	// window.onbeforeunload = function() {
+ //  	return "You are attempting to leave this page.";}
 
 	$('.schema-explanation').hide();
   
@@ -12,5 +12,10 @@ $(document).ready(function() {
 	})
 
 	$('.modal-trigger').leanModal();
+
+	$('.add-col').click(function(e){
+		e.preventDefault();
+		$('.create-table-form').append()
+	})
 
 });
