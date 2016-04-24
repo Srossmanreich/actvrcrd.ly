@@ -12,7 +12,44 @@ end
 
 post '/:id' do 
 	puts params
+
+	col_count = params[:colcount].to_i
+	array = Array(1..col_count)
+
+	puts "This is the array"
+	puts array
+	puts params["2-foreignkey"]
+	puts params["2-header"]
+
 	user = User.find_by('identifier = ?',params[:id])
 	table = Table.create(name: params[:tablename], user_id: user.id)
+
+	array.each do |index|
+		
+		if params["#{index}-foreignkey"]
+			fkey = 1
+		else
+			fkey = 0
+		end
+
+		if params["#{index}-presence"]
+			pres = 1
+		else
+			pres = 0
+		end
+
+		if params["#{index}-unique"]
+			uniq = 1
+		else
+			uniq = 0
+		end
+
+		puts "For #{index}"
+		puts fkey
+		puts pres
+		puts uniq
+
+		Column.create(name: params["#{index}-header"], category: params["#{index}-type"], foreignkey?: fkey, presence?: pres, unique?: uniq, table_id: table.id)
+	end
 
 end
