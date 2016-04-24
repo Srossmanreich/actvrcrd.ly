@@ -19,7 +19,11 @@ $(document).ready(function() {
 	$('.submit-tables').click(function(e){
 		e.preventDefault();
 		var link = $('.addtable').attr('action');
-		var input = $('.addtable').serializeArray();
+		var input = $('.addtable').serialize();
+		$(this).parent().parent().hide();
+
+		console.log(link);
+		console.log(input);
 		
 		var request = $.ajax({
 	      method: "POST",
