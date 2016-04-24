@@ -30,3 +30,20 @@
 .another-tab{
   margin: 0px 50px;
 }
+
+.margin-left, table {
+  margin-left: 50px;
+}
+
+table tr {
+  text-align: center;
+}
+
+table th, table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}

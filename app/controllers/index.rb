@@ -12,6 +12,8 @@ end
 
 post '/:id' do 
 
+	puts params
+
 	col_count = params[:colcount].to_i
 	array = Array(1..col_count)
 
@@ -41,8 +43,9 @@ post '/:id' do
 		Column.create(name: params["#{index}-header"], category: params["#{index}-type"], foreignkey?: fkey, presence?: pres, unique?: uniq, table_id: table.id)
 	end
 
-	send = table.columns
+	send = {columns: table.columns, tablename: params[:tablename]}
 	content_type :json
+	puts send.to_json
     send.to_json
 
 end

@@ -27,6 +27,7 @@ $(document).ready(function() {
 		$('.moretables').append("<br>"+toAddTab);
 	})
 
+//Submit your table
 	$('.submit-tables').click(function(e){
 		e.preventDefault();
 		var link = $('.addtable').attr('action');
@@ -42,7 +43,12 @@ $(document).ready(function() {
 
 	    request.done(function(data) {
       		console.log(data);
-    })
+      		var template = $("#table-diagram").html();
+      		var content = Mustache.render(template, {tablename: data.tablename, tablearray: data.columns});
+
+      		console.log(content)
+			$('.moretables').prepend(content);
+    	})
 
 
 	})

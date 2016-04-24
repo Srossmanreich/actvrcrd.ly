@@ -16,6 +16,22 @@
       <script type="text/javascript" src="js/application.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
 
+      <script id="table-diagram" type="x-tmpl-mustache">
+        <p class="margin-left">{{tablename}}</p>
+        <table>
+         <tr><th>Name</th><th>Category</th><th>Presence?</th><th>Unique?</th><th>Foreign_key?</th></tr>
+          {{#tablearray}}
+            <tr>
+              <td>{{name}}</td>
+              <td>{{category}}</td>
+              <td>{{presence?}}</td>
+              <td>{{unique?}}</td>
+              <td>{{foreignkey?}}</td>
+            </tr>
+          {{/tablearray}}
+        </table>
+      </script>
+
       <script id="morecols" type="x-tmpl-mustache">
         <p>Enter a column header and type:</p>
           <input class="header" type="text" name="{{index}}-header"> 
