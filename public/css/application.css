@@ -1,4 +1,4 @@
-.home-explanation h2, .home-explanation h3, .home-explanation p, .schema-explanation h2 {
+.home-explanation h2, .home-explanation h3, .home-explanation p, .schema-explanation h2, .schema-explanation p {
   display: flex;
   align-items: center;
   justify-content: center;

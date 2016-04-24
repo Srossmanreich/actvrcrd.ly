@@ -8,4 +8,6 @@ $(document).ready(function() {
 		$('.schema-explanation').show();
 	})
 
+	$('.modal-trigger').leanModal();
+
 });
