@@ -10,15 +10,15 @@
       <p><input class="submit-tables" type="submit" value="Submit Table"></p>
       <div class="morecolumns">
         <p>Enter a column header and type:</p>
-        <input type="text" name="header"> 
-        <select name="type">
+        <input class="header" type="text" name="1-header"> 
+        <select name="1-type">
           <option value="integer">Integer</option>
           <option value="text">Text</option>
           <option value="datetime">Datetime</option>
         </select>
-        <label><input type="checkbox" id="foreignkey" value="1" name="foreignkey?">foreign key?</label>
-        <label><input type="checkbox" id="presence" value="1" name="presence?">presence required?</label>
-        <label><input type="checkbox" id="unique" value="1" name="unique?">unique required?</label>
+        <label><input type="checkbox" id="foreignkey" value="1" name="1-foreignkey">foreign key?</label>
+        <label><input type="checkbox" id="presence" value="1" name="1-presence">presence required?</label>
+        <label><input type="checkbox" id="unique" value="1" name="1-unique">unique required?</label>
       </div>
       <br>
       <p><a class="another-col" href="#">Add another column</a></p>
@@ -28,4 +28,3 @@
   <p><a href="#"><input class="another-tab" type="submit" value="Create another table"></a></p>
 
 </div>
-

@@ -11,7 +11,8 @@ get '/:id' do
 end
 
 post '/:id' do 
-	puts params[:tablename]
+	puts params
 	user = User.find_by('identifier = ?',params[:id])
-	Table.create(name: params[:tablename], user_id: user.id)
+	table = Table.create(name: params[:tablename], user_id: user.id)
+
 end

@@ -14,6 +14,20 @@
       <!--Import jQuery-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
       <script type="text/javascript" src="js/application.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+
+      <script id="morecols" type="x-tmpl-mustache">
+        <p>Enter a column header and type:</p>
+          <input class="header" type="text" name="{{index}}-header"> 
+          <select name="{{index}}-type">
+            <option value="integer">Integer</option>
+            <option value="text">Text</option>
+            <option value="datetime">Datetime</option>
+          </select>
+          <label><input type="checkbox" id="foreignkey" value="1" name="{{index}}-foreignkey">foreign key?</label>
+          <label><input type="checkbox" id="presence" value="1" name="{{index}}-presence">presence required?</label>
+          <label><input type="checkbox" id="unique" value="1" name="{{index}}-unique">unique required?</label>
+      </script>
 
       <%= yield %>
     </body>

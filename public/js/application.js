@@ -1,15 +1,26 @@
 $(document).ready(function() {
 
+	var num = 2
+
 	$('.another-tab').hide();
 	// window.onbeforeunload = function() {
  //  	return "You are attempting to leave this page.";}
 
+ //Add another column
+
 	$('.another-col').click(function(e){
 		e.preventDefault();
-		var toAddCols = $('.morecolumns').html();
-		$(this).parent().parent().append("<p>"+toAddCols+"</p>")
+
+		var template = $("#morecols").html();
+
+		var content = Mustache.render(template, {index: num});
+		$(this).parent().parent().append(content);
+
+		num += 1; 
 	})
 
+
+//Add another table
 	$('.another-tab').click(function(e){
 		e.preventDefault();
 		var toAddTab = $('.moretables').html();
@@ -22,7 +33,6 @@ $(document).ready(function() {
 		var input = $('.addtable').serialize();
 		$(this).parent().parent().hide();
 
-		console.log(link);
 		console.log(input);
 		
 		var request = $.ajax({
