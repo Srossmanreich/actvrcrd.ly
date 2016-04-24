@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 	var num = 2
 
+	var toAddTab = $('.moretables').html();
 	$('.another-tab').hide();
 	// window.onbeforeunload = function() {
  //  	return "You are attempting to leave this page.";}
@@ -23,8 +24,8 @@ $(document).ready(function() {
 //Add another table
 	$('.another-tab').click(function(e){
 		e.preventDefault();
-		var toAddTab = $('.moretables').html();
 		$('.moretables').append("<br>"+toAddTab);
+		$(this).hide();
 	})
 
 //Submit your table
@@ -48,6 +49,7 @@ $(document).ready(function() {
 
       		console.log(content)
 			$('.moretables').prepend(content);
+			$('.another-tab').show();
     	})
 
 
