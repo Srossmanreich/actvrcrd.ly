@@ -1,4 +1,12 @@
-.home-explanation h2, .home-explanation h3, .home-explanation p, .schema-explanation h2 {
+.get-started{
+  border: 2px solid black;
+}
+
+.get-started:hover{
+  background-color: red;
+}
+
+.home-explanation h2, .home-explanation h3, .home-explanation p, .schema-explanation h2, .center-align {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,5 +21,9 @@
   margin: 10px 350px;
 }
 
-
+.addtable{
+  margin: 0px 50px;
+  padding: 10px;
+  border: 2px solid black;
+}
 

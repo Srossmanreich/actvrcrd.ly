@@ -3,8 +3,6 @@
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/application.css"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
@@ -13,22 +11,9 @@
     </head>
 
     <body>
-      <!--Import jQuery before materialize.js-->
+      <!--Import jQuery-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
-      <script type="text/javascript" src="js/materialize.js"></script>
       <script type="text/javascript" src="js/application.js"></script>
-
-      <div class="navbar-fixed">
-        <nav>
-         <div class="nav-wrapper red">
-           <a href="/" class="brand-logo">-->actvrcrd.ly</a>
-
-           <ul class="right hide-on-med-and-down">
-             <li><a href="#">Code</a></li>
-           </ul>
-         </div>
-        </nav>
-      </div>
 
       <%= yield %>
     </body>
