@@ -21,5 +21,14 @@
 
 .dropdown-button{
   display: inline-block !important;
+  margin-right: 30px !important;
 }
 
+.row{
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.add-cols{
+  clear: both;
+}

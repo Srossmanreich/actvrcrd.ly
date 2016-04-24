@@ -26,7 +26,23 @@ $(document).ready(function() {
       gutter: 0, // Spacing from edge
       belowOrigin: true, // Displays dropdown below the button
       alignment: 'left' // Displays dropdown with edge aligned to the left of button
-    }
-  );
+    })
+
+    $('.dropdown-item').click(function(e){
+    	e.preventDefault();
+    	var choice = $(this).text();
+    	var thisclass = $(this).parent().parent()
+
+    	thisclass.hide();
+    	thisclass.prev().removeClass('dropdown-button red btn col s4').hide();
+
+    	var dropdownclass = thisclass.attr('class').split(" ")[0];
+
+		$("<div class='choicefromdrop'>"+choice+"</div>").insertAfter('.'+dropdownclass);
+
+		$(".choicefromdrop").css('margin','0 10px');
+
+
+    })
 
 });
