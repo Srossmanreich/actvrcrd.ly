@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+	$('.another-tab').hide();
 	// window.onbeforeunload = function() {
  //  	return "You are attempting to leave this page.";}
 
