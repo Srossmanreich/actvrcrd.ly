@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	window.onbeforeunload = function() {
+  	return "You are attempting to leave this page.";}
+
 	$('.schema-explanation').hide();
   
 	$('.get-started').click(function(e){
