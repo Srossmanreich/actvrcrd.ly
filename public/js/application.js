@@ -9,11 +9,23 @@ $(document).ready(function() {
 		e.preventDefault();
 		$('.home-explanation').hide();
 		$('.schema-explanation').show();
+		$('.another-tab').hide();
 	})
 
 	$('.another-col').click(function(e){
 		e.preventDefault();
-		$(this).parent().parent().append("<p><input type='text' name='header'><select><option value='integer'>Integer</option><option value='text'>Text</option><option value='datetime'>Datetime</option></select><label><input type='checkbox' id='foreignkey' value='foreignkey'>foreign key?</label><label><input type='checkbox' id='presence' value='presence'>presence required?</label><label><input type='checkbox' id='unique' value='unique'>unique required?</label><label><input type='checkbox' id='poly' value='poly'>polymorphic true?</label></p>")
+		var toAddCols = $('.morecolumns').html();
+		$(this).parent().parent().append("<p>"+toAddCols+"</p>")
+	})
+
+	$('.another-tab').click(function(e){
+		e.preventDefault();
+		var toAddTab = $('.moretables').html();
+		$('.moretables').append("<br>"+toAddTab);
+	})
+
+	$('.submit-tables').click(function(e){
+		
 	})
 
 });
