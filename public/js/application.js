@@ -31,6 +31,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var link = $('.addtable').attr('action');
 		var input = $('.addtable').serialize();
+		
 		$(this).parent().parent().hide();
 
 		console.log(input);
@@ -38,7 +39,7 @@ $(document).ready(function() {
 		var request = $.ajax({
 	      method: "POST",
 	      url: link,
-	      data: input
+	      data: input + (`&colcount=${num-1}`)
 	    })
 	})
 
