@@ -7,7 +7,7 @@ class CreateColumnsTable < ActiveRecord::Migration
       t.integer :presence?
       t.integer :unique?
       t.integer :table_id, index: true
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
