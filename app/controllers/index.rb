@@ -5,7 +5,13 @@ get '/' do
 end
 
 get '/:id' do 
-	id = params[:id]
-	User.create(identifier: id)
+	@id = params[:id]
+	User.create(identifier: @id)
 	erb :index
+end
+
+post '/:id' do 
+	puts params[:tablename]
+	user = User.find_by('identifier = ?',params[:id])
+	Table.create(name: params[:tablename], user_id: user.id)
 end
