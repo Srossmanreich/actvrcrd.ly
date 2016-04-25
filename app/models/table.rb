@@ -2,8 +2,9 @@ class Table < ActiveRecord::Base
 
   belongs_to :user
   has_many :columns
-  belongs_to :origin, :class_name => 'Association'
-  belongs_to :target, :class_name => 'Association'
+
+  has_many :origins, :class_name => 'Relationship', :foreign_key => 'origin_id'
+  has_many :targets, :class_name => 'Relationship', :foreign_key => 'target_id'
   
   validates :name, presence: true
 

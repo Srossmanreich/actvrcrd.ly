@@ -1,8 +1,8 @@
-class CreateAssociationsTable < ActiveRecord::Migration
+class CreateRelationshipsTable < ActiveRecord::Migration
   def change
-  	create_table :associations do |t|
+  	create_table :relationships do |t|
       t.integer :origin_id, index: true
-      t.string :association
+      t.string :assoc
       t.integer :target_id, index: true
       t.timestamps null: false
     end
