@@ -35,7 +35,8 @@ $(document).ready(function() {
 		$('.submit-tables').click(function(e){
 			e.preventDefault();
 			var link = $('.addtable').attr('action');
-			var input = $('.addtable').serialize();
+			var input = $('.at-active').serialize();
+			$('.addtable').removeClass('at-active');
 			
 			$(this).parent().parent().hide();
 
@@ -54,6 +55,8 @@ $(document).ready(function() {
 
 				$('.moretables').prepend(content2);
 				$('.another-tab').show();
+				template2 = "";
+	    		content2 = "";
 	    	})
 
 		})
@@ -63,12 +66,12 @@ $(document).ready(function() {
 
 });
 
+
 function openModal() {
 	location.hash = "#openModal";
-
 	var template = $("#relation").html();
 	var content = Mustache.render(template, {
-		tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
+	tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
 	});
 
 	$(".relation-items").append(content);
