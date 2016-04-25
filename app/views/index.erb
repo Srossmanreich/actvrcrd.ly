@@ -2,31 +2,17 @@
   <h2>Design your schema</h2>
   <h6 class="center-align"><a href="/">Home</a></h6>
 
-  <h4 class="center-align"><a href="#openModal">Get your code</a></h4>
+  <h4 class="center-align"><a onclick="openModal()">Get your code</a></h4>
 
     <div id="openModal" class="modalDialog">
       <div>
         <a href="#close" title="Close" class="close">X</a>
         <h3>Before you get your code ...</h3>
         <p>We need to know how your tables relate to each other.</p>
-        <select name="1-origin">
-          <%if @user_tables%>
-            <%@user_tables.each do |table| %>
-              <option value="tablename"><%=table.name%></option>
-            <%end%>
-          <%end%>
-        </select>
-        <select name="1-rel">
-          <option value="has_one">has one</option>
-          <option value="has_many">has many</option>
-        </select>
-        <select name="1-target">
-          <%if @user_tables%>
-            <%@user_tables.each do |table| %>
-              <option value="tablename"><%=table.name%></option>
-            <%end%>
-          <%end%>
-        </select>
+
+        <div class="relation-items">
+        </div>
+
         <p class="add-rel"><a href="#">Add another relationship</a></p>
       </div>
     </div>

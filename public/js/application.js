@@ -59,3 +59,14 @@ $(document).ready(function() {
 	setupSubmitTableClick();
 
 });
+
+function openModal() {
+	location.hash = "#openModal";
+
+	var template = $("#relation").html();
+	var content = Mustache.render(template, {
+		tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
+	});
+
+	$(".relation-items").append(content);
+}

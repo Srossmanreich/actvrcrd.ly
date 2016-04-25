@@ -7,19 +7,16 @@ end
 
 get '/:id' do 
 	@id = params[:id]
-	User.create(identifier: @id)
+	user = User.create(identifier: @id)
 	erb :index
 end
 
 post '/:id' do 
 
-	puts params
-
 	col_count = params[:colcount].to_i
 	array = Array(1..col_count)
 
 	user = User.find_by('identifier = ?',params[:id])
-	@user_tables = user.tables
 	table = Table.create(name: params[:tablename], user_id: user.id)
 
 	array.each do |index|
@@ -46,8 +43,8 @@ post '/:id' do
 	end
 
 	send = {columns: table.columns, tablename: params[:tablename]}
+	@user_tables = user.tables
 	content_type :json
-	puts send.to_json
     send.to_json
 
 end
