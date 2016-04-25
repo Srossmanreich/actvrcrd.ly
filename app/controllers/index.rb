@@ -49,3 +49,11 @@ post '/:id' do
     send.to_json
 
 end
+
+post '/code/:id' do 
+	@id = params[:id]
+	@assoc_nums = params.keys[-4].split("-")[0]
+end
+
+
+
