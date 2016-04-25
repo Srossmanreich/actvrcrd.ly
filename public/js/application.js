@@ -5,8 +5,6 @@ $(document).ready(function() {
 	var toAddTab = $('.moretables').html();
 	$('.another-tab').hide();
 
-	var template1 = $("#morecols").html();
-	var content1 = Mustache.render(template1, {index: num});
 	// window.onbeforeunload = function() {
  //  	return "You are attempting to leave this page.";}
 
@@ -14,6 +12,9 @@ $(document).ready(function() {
 
  	$('.schema-explanation').on('click','.another-col',function(e){
  		e.preventDefault();
+
+ 		var template1 = $("#morecols").html();
+		var content1 = Mustache.render(template1, {index: num});
 
 		$('.addtable').append(content1);
 
@@ -34,9 +35,12 @@ $(document).ready(function() {
 		$('.submit-tables').click(function(e){
 			e.preventDefault();
 			var link = $('.addtable').attr('action');
-			var input = $('.addtable').serialize();
+			var input = $('.at-active').serialize();
+			$('.addtable').removeClass('at-active');
 			
 			$(this).parent().parent().hide();
+
+			console.log(input);
 			
 			var request = $.ajax({
 		      method: "POST",
@@ -51,6 +55,8 @@ $(document).ready(function() {
 
 				$('.moretables').prepend(content2);
 				$('.another-tab').show();
+				template2 = "";
+	    		content2 = "";
 	    	})
 
 		})
@@ -59,3 +65,26 @@ $(document).ready(function() {
 	setupSubmitTableClick();
 
 });
+
+var num = 1
+
+function openModal() {
+	location.hash = "#openModal";
+	var template = $("#relation").html();
+	var content = Mustache.render(template, {
+	index: num, tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
+	});
+
+	$(".relation-items").html(content);
+}
+
+function addRel() {
+	num += 1;
+	var template = $("#relation").html();
+	var content = Mustache.render(template, {
+	index: num, tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
+	});
+
+	$(".relation-items").append("<br>"+content);
+}
+
