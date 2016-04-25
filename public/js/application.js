@@ -26,38 +26,36 @@ $(document).ready(function() {
 		e.preventDefault();
 		$('.moretables').append("<br>"+toAddTab);
 		$(this).hide();
+		setupSubmitTableClick();
 	})
-	// $('.another-tab').click(function(e){
-	// 	e.preventDefault();
-	// 	$('.moretables').append("<br>"+toAddTab);
-	// 	$(this).hide();
-	// })
 
 //Submit your table
-	
-	$('.submit-tables').click(function(e){
-		e.preventDefault();
-		var link = $('.addtable').attr('action');
-		var input = $('.addtable').serialize();
-		
-		$(this).parent().parent().hide();
-		
-		var request = $.ajax({
-	      method: "POST",
-	      url: link,
-	      data: input + (`&colcount=${num-1}`)
-	    })
+	function setupSubmitTableClick() {
+		$('.submit-tables').click(function(e){
+			e.preventDefault();
+			var link = $('.addtable').attr('action');
+			var input = $('.addtable').serialize();
+			
+			$(this).parent().parent().hide();
+			
+			var request = $.ajax({
+		      method: "POST",
+		      url: link,
+		      data: input + (`&colcount=${num-1}`)
+		    })
 
-	    request.done(function(data) {
-      		
-      		var template2 = $("#table-diagram").html();
-      		var content2 = Mustache.render(template2, {tablename: data.tablename, tablearray: data.columns});
+		    request.done(function(data) {
+	      		
+	      		var template2 = $("#table-diagram").html();
+	      		var content2 = Mustache.render(template2, {tablename: data.tablename, tablearray: data.columns});
 
-			$('.moretables').prepend(content2);
-			$('.another-tab').show();
-    	})
+				$('.moretables').prepend(content2);
+				$('.another-tab').show();
+	    	})
 
+		})
+	}
 
-	})
+	setupSubmitTableClick();
 
 });
