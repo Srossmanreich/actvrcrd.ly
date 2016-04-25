@@ -19,6 +19,7 @@ post '/:id' do
 	array = Array(1..col_count)
 
 	user = User.find_by('identifier = ?',params[:id])
+	@user_tables = user.tables
 	table = Table.create(name: params[:tablename], user_id: user.id)
 
 	array.each do |index|
