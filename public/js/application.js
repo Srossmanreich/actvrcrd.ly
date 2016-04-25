@@ -74,5 +74,5 @@ function openModal() {
 	tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
 	});
 
-	$(".relation-items").append(content);
+	$(".relation-items").html(content);
 }
