@@ -13,7 +13,7 @@ end
 
 post '/:id' do 
 
-	puts params
+	@id = params[:id]
 	col_count = params[:colcount].to_i
 	array = Array(1..col_count)
 

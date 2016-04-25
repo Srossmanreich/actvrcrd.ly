@@ -7,13 +7,19 @@
     <div id="openModal" class="modalDialog">
       <div>
         <a href="#close" title="Close" class="close">X</a>
-        <h3>Before you get your code ...</h3>
-        <p>We need to know how your tables relate to each other.</p>
 
-        <div class="relation-items">
-        </div>
+        <form action="/code/<%=@id%>">
+          <h3>Before you get your code ...</h3>
+          <p>We need to know how your tables relate to each other.</p>
 
-        <p class="add-rel"><a href="#">Add another relationship</a></p>
+          <div class="relation-items">
+          </div>
+
+          <p class="add-rel"><a onclick="addRel()">Add another relationship</a></p>
+
+          <p><input class="get-code" type="submit" value="Get your code!"></p>
+        </form>
+
       </div>
     </div>
 

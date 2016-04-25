@@ -46,18 +46,18 @@
       </script>
 
       <script id="relation" type="x-tmpl-mustache">
-          <select name="1-origin">
+          <select name="{{index}}-origin">
             {{#tables}}
             <option value="{{name}}">{{name}}</option>
             {{/tables}}
           </select>
 
-          <select name="1-rel">
+          <select name="{{index}}-rel">
             <option value="has_one">has one</option>
             <option value="has_many">has many</option>
           </select>
 
-          <select name="1-target">
+          <select name="{{index}}-target">
             {{#tables}}
             <option value="{{name}}">{{name}}</option>
             {{/tables}}
