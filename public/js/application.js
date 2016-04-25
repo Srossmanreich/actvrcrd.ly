@@ -5,8 +5,6 @@ $(document).ready(function() {
 	var toAddTab = $('.moretables').html();
 	$('.another-tab').hide();
 
-	var template1 = $("#morecols").html();
-	var content1 = Mustache.render(template1, {index: num});
 	// window.onbeforeunload = function() {
  //  	return "You are attempting to leave this page.";}
 
@@ -14,6 +12,9 @@ $(document).ready(function() {
 
  	$('.schema-explanation').on('click','.another-col',function(e){
  		e.preventDefault();
+
+ 		var template1 = $("#morecols").html();
+		var content1 = Mustache.render(template1, {index: num});
 
 		$('.addtable').append(content1);
 
@@ -37,6 +38,8 @@ $(document).ready(function() {
 			var input = $('.addtable').serialize();
 			
 			$(this).parent().parent().hide();
+
+			console.log(input);
 			
 			var request = $.ajax({
 		      method: "POST",
