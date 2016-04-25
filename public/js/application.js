@@ -4,31 +4,37 @@ $(document).ready(function() {
 
 	var toAddTab = $('.moretables').html();
 	$('.another-tab').hide();
+
+	var template1 = $("#morecols").html();
+	var content1 = Mustache.render(template1, {index: num});
 	// window.onbeforeunload = function() {
  //  	return "You are attempting to leave this page.";}
 
  //Add another column
 
-	$('.another-col').click(function(e){
-		e.preventDefault();
+ 	$('.schema-explanation').on('click','.another-col',function(e){
+ 		e.preventDefault();
 
-		var template = $("#morecols").html();
-
-		var content = Mustache.render(template, {index: num});
-		$(this).parent().parent().append(content);
+		$('.addtable').append(content1);
 
 		num += 1; 
-	})
-
+ 	})
 
 //Add another table
-	$('.another-tab').click(function(e){
+	
+	$('.schema-explanation').on('click','.another-tab',function(e){
 		e.preventDefault();
 		$('.moretables').append("<br>"+toAddTab);
 		$(this).hide();
 	})
+	// $('.another-tab').click(function(e){
+	// 	e.preventDefault();
+	// 	$('.moretables').append("<br>"+toAddTab);
+	// 	$(this).hide();
+	// })
 
 //Submit your table
+	
 	$('.submit-tables').click(function(e){
 		e.preventDefault();
 		var link = $('.addtable').attr('action');
@@ -43,12 +49,11 @@ $(document).ready(function() {
 	    })
 
 	    request.done(function(data) {
-      		console.log(data);
-      		var template = $("#table-diagram").html();
-      		var content = Mustache.render(template, {tablename: data.tablename, tablearray: data.columns});
+      		
+      		var template2 = $("#table-diagram").html();
+      		var content2 = Mustache.render(template2, {tablename: data.tablename, tablearray: data.columns});
 
-      		console.log(content)
-			$('.moretables').prepend(content);
+			$('.moretables').prepend(content2);
 			$('.another-tab').show();
     	})
 
