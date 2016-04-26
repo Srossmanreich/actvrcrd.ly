@@ -15,7 +15,7 @@
           <div class="relation-items">
           </div>
 
-          <p class="add-rel"><a onclick="addRel()">Add another relationship</a></p>
+          <p class="add-rel"><a onclick="addRel()">Add a relationship</a></p>
 
           <p><input class="get-code" type="submit" value="Get your code!"></p>
         </form>
@@ -38,9 +38,14 @@
         <p>Enter a column header and type:</p>
         <input class="header" type="text" name="1-header">
         <select name="1-type">
-          <option value="integer">Integer</option>
-          <option value="text">Text</option>
-          <option value="datetime">Datetime</option>
+          <option value="integer">integer</option>
+          <option value="float">float</option>
+          <option value="string">string</option>
+          <option value="text">text</option>
+          <option value="datetime">datetime</option>
+          <option value="date">date</option>
+          <option value="time">time</option>
+          <option value="boolean">boolean</option>
         </select>
         <label><input type="checkbox" id="foreignkey" value="1" name="1-foreignkey">foreign key?</label>
         <label><input type="checkbox" id="presence" value="1" name="1-presence">presence required?</label>

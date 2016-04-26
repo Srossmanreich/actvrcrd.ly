@@ -4,10 +4,18 @@
 
 <%@tables.each do |table|%>
 
-	<h3><%=table.name%> Model (consider naming this model file <%=table.name.singularize%>.rb)</h3>
+	<h3 style="display: inline;"><%=table.name%> Model</h3><br>
+	<h5 style="display: inline;">(consider naming this model file <%=table.name.singularize%>.rb)</h5>
 
 	<pre>class <%=table.name.singularize%> < ActiveRecord::Base
-
+	<%if @associations.where(target_id: table.id)%><%relevant_rel = @associations.where(target_id: table.id)%><%relevant_rel.each do |rel| %>
+	belongs_to :<%=(@tables.find(rel.origin_id)).name.downcase.singularize%><%end%><%end%>
+	<%if @associations.where(origin_id: table.id)%><%relevant_rel = @associations.where(origin_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.assoc == "has_one"%>
+	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%><%end%><%end%><%end%>
+	<%table.columns.each do |col|%><%if col.presence? == 1 && col.unique? == 1%>
+	validates :<%=col.name%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>
+	validates :<%=col.name%>, presence: true<%elsif col.unique? == 1%>
+	validates :<%=col.name%>, uniqueness: true<%end%><%end%>
 end</pre>
 
 <%end%>
@@ -16,12 +24,14 @@ end</pre>
 
 <%@tables.each do |table|%>
 
-	<h3><%=table.name%> Migration (consider naming this table in the migration 'create_<%=table.name%>_table -- note the first line of the below follows this convention)</h3>
+	<h3 style="display: inline;"><%=table.name%> Migration</h3><br> 
+	<h5 style="display: inline;">(consider naming this table in the migration 'create_<%=table.name.downcase%>_table' -- note the first line of the below follows this convention)</h5>
+
 
 	<pre>class Create<%=table.name.capitalize%>Table < ActiveRecord::Migration
 	def change
-		create_table :<%=table.name.downcase%> do |t|
-
+		create_table :<%=table.name.downcase%> do |t|<%table.columns.each do |col|%>
+			t.<%=col.category%> :<%=col.name%><%if col.foreignkey? == 1%>, index: true<%end%><%end%>
 			t.timestamps null: false
 		end
 	end

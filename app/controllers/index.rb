@@ -55,7 +55,11 @@ post '/:id/code' do
 	assoc_nums = params.keys[-4].split("-")[0].to_i
 
 	@user = User.find_by('identifier = ?',id)
-	tables = @user.tables
+	@tables = @user.tables 
+	@associations = @user.relationships
+
+	num_rel = @associations.count
+	num_tabs = @tables.count
 
 	array = Array(1..assoc_nums)
 
@@ -69,14 +73,11 @@ post '/:id/code' do
 		relation = params[rel_key]
 		target = params[tar_key]
 
-		ori_tab = tables.find_by(name:origin)
-		tar_tab = tables.find_by(name:target)
+		ori_tab = @tables.find_by(name:origin)
+		tar_tab = @tables.find_by(name:target)
 
 		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,user_id:@user.id)
 	end
-	
-	@tables = @user.tables 
-	num_tabs = tables.count
 
 	erb :code
 end
