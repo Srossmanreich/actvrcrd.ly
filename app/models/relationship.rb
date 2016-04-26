@@ -2,6 +2,7 @@ class Relationship < ActiveRecord::Base
 
  belongs_to :origin, :class_name => 'Table', :foreign_key => 'origin_id'
  belongs_to :target, :class_name => 'Table', :foreign_key => 'target_id'
+ belongs_to :channel, :class_name => 'Table', :foreign_key => 'channel_id'
  belongs_to :user
 
  validates :origin_id, presence: true

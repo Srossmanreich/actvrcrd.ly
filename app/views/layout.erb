@@ -73,6 +73,20 @@
             <option value="{{name}}">{{name}}</option>
             {{/tables}}
           </select>
+
+          <select name="{{index}}-through">
+            <option value="NA">N/A</option>
+            <option value="through">through</option>
+          </select>
+
+          <select name="{{index}}-channel">
+            <option value="NA">N/A</option>
+            {{#tables}}
+            <option value="{{name}}">{{name}}</option>
+            {{/tables}}
+          </select>
+          <br>
+
       </script>
 
       <%= yield %>

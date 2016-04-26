@@ -4,6 +4,8 @@ class CreateRelationshipsTable < ActiveRecord::Migration
       t.integer :origin_id, index: true
       t.string :assoc
       t.integer :target_id, index: true
+      t.string :connector
+      t.integer :channel_id, index: true
       t.integer :user_id, index:true
       t.timestamps null: false
     end
