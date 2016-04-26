@@ -1,6 +1,6 @@
 <div class="schema-explanation">
   <h2>Design your schema</h2>
-  <h6 class="center-align"><a href="/">Home</a></h6>
+  <h6 class="center-align"><a href="/">Homepage</a></h6>
 
   <div class="btn get-started"
   <h4 class="center-align"><a onclick="openModal()">Get your code</a></h4>
@@ -32,13 +32,15 @@
 
   <div class="moretables">
     <form class="addtable at-active" method="POST" action="/<%=@id%>">
-      <p>Table name (e.g., Users, Votes --> keep it simple and keep it plural):</p>
+
+      <div class="submit-tables-btn"><p><input class="submit-tables get-code" type="submit" value="Submit Table"></p></div>
+
+      <p>Table name (e.g., Users, Votes)<br>
+      --> keep it simple, capitalized, and plural:</p>
       <p><input type="text" name="tablename"></p>
-      <p>NOTE: an ID (integer) will automatically be generated with each table</p>
+      <p>Don't add an ID for your table -- it will come as a default</p>
       
-      <p><input class="submit-tables" type="submit" value="Submit Table"></p>
-      
-      <p><a class="another-col" href="#">Add another column</a></p>
+      <p><a class="another-col" href="#">Add a column</a></p>
       <div class="morecolumns">
         <p>Enter a column header and type:</p>
         <input class="header" type="text" name="1-header">
