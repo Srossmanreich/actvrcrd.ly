@@ -97,7 +97,7 @@ th, td {
 }
 
 .modalDialog > div {
-  width: 400px;
+  width: 500px;
   position: relative;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
@@ -200,4 +200,18 @@ th, td {
 .another-tab:hover{
   color: red;
   background-color: white;
+}
+
+/*Code page*/
+
+.codepage {
+  margin-left: 50px;
+}
+
+.models-view, .migrations-view {
+  background-color: #FFE4E1;
+  max-width: 70%;
+  padding: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

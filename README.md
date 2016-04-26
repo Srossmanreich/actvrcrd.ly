@@ -26,6 +26,8 @@ The product includes basic css and forms and a unique identifier for your output
 	* Automatic file creation
 	* Better visual interface for schema design
 	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
+	* Fix bugs related to refreshing
+	* Currently you must have at least one association
 
 * Active Record functionality
 	* Polymorphic tables
