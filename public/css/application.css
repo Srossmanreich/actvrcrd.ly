@@ -166,10 +166,6 @@ th, td {
   margin: auto;
 }
 
-.submit-tables-btn{
-  float: right;
-}
-
 .submit-tables{
   background-color: red;
 }
@@ -184,5 +180,24 @@ th, td {
 
 .another-col:hover{
   color: black;
+  background-color: white;
+}
+
+.schema-explanation{
+  margin-bottom: 10px;
+}
+
+.another-tab{
+  margin: 0px 150px;
+  text-decoration: none;
+  border: 2px solid red;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+.another-tab:hover{
+  color: red;
   background-color: white;
 }
