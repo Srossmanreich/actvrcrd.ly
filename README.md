@@ -25,6 +25,7 @@ The product includes basic css and forms and a unique identifier for your output
 	* Upfront explanations of different table types
 	* Automatic file creation
 	* Better visual interface for schema design
+	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
 
 * Active Record functionality
 	* Polymorphic tables
@@ -35,3 +36,5 @@ The product includes basic css and forms and a unique identifier for your output
 	* Better CSS
 
 Want to contribute? Feel free to contact me via GitHub or by email: Srossmanreich@gmail.com
+
+![Shoutout to the RockDove Scumbags][sbpete.jpg]
