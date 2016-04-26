@@ -64,6 +64,8 @@ $(document).ready(function() {
 
 	setupSubmitTableClick();
 
+//Model Skeleton
+
 });
 
 var num = 1

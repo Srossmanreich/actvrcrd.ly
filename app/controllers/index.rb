@@ -72,9 +72,11 @@ post '/:id/code' do
 		ori_tab = tables.find_by(name:origin)
 		tar_tab = tables.find_by(name:target)
 
-		newrel = Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,user_id:@user.id)
+		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,user_id:@user.id)
 	end
 	
+	tables = @user.tables 
+	num_tabs = tables.count
 
 	erb :tester
 end

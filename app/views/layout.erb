@@ -16,6 +16,8 @@
       <script type="text/javascript" src="js/application.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
 
+      <!-- Table diagrams -->
+
       <script id="table-diagram" type="x-tmpl-mustache">
         <p class="margin-left table-name">{{tablename}}</p>
         <table>
@@ -32,6 +34,8 @@
         </table>
       </script>
 
+      <!-- Add more column headers -->
+
       <script id="morecols" type="x-tmpl-mustache">
         <p>Enter a column header and type:</p>
           <input class="header" type="text" name="{{index}}-header"> 
@@ -44,6 +48,8 @@
           <label><input type="checkbox" id="presence" value="1" name="{{index}}-presence">presence required?</label>
           <label><input type="checkbox" id="unique" value="1" name="{{index}}-unique">unique required?</label>
       </script>
+
+      <!-- Dropdown in Modal -->
 
       <script id="relation" type="x-tmpl-mustache">
           <select name="{{index}}-origin">
@@ -62,6 +68,31 @@
             <option value="{{name}}">{{name}}</option>
             {{/tables}}
           </select>
+      </script>
+
+      <!-- Model Skeleton -->
+
+      <script id="modelskels" type="x-tmpl-mustache">
+          <p>class {model_name} < ActiveRecord::Base</p>
+          <div class="mod-data">
+
+          </div>
+          <p>end</p>
+      </script>
+
+      <!-- Migration Skeleton -->
+
+      <script id="migskels" type="x-tmpl-mustache">
+          <p>class Create{table_name_up}Table < ActiveRecord::Migration</p>
+          <p>def change</p>
+          <p>create_table :{table_name_dw} do |t|</p>
+          <div class="mig-data">
+
+          </div>
+          <p>t.timestampes null: false</p>
+          <p>end</p>
+          <p>end</p>
+          <p>end</p>
       </script>
 
       <%= yield %>
