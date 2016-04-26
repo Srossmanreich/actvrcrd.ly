@@ -72,12 +72,6 @@ var num = 1
 
 function openModal() {
 	location.hash = "#openModal";
-	var template = $("#relation").html();
-	var content = Mustache.render(template, {
-	index: num, tables: Array.from($(".table-name")).map(x => ({name:  x.innerHTML}))
-	});
-
-	$(".relation-items").html(content);
 }
 
 function addRel() {
