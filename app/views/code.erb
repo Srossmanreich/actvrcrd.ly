@@ -13,7 +13,8 @@
 	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_one" && rel.connector == "through"%>
 	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%>, through: :<%=(@tables.find(rel.channel_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_many" && rel.connector == "NA"%>
 	has_many :<%=(@tables.find(rel.target_id)).name.downcase%><%end%><%if rel.assoc == "has_many" && rel.connector == "through"%>
-	has_many :<%=(@tables.find(rel.target_id)).name.downcase%>, through: :<%=(@tables.find(rel.channel_id)).name.downcase%><%end%><%end%><%end%>
+	has_many :<%=(@tables.find(rel.target_id)).name.downcase%>, through: :<%=(@tables.find(rel.channel_id)).name.downcase%><%end%><%if rel.assoc == "has_belongs_many" && rel.connector == "NA"%>
+	has_and_belongs_to_many :<%=(@tables.find(rel.target_id)).name.downcase%><%end%><%end%><%end%>
 	<%table.columns.each do |col|%><%if col.presence? == 1 && col.unique? == 1%>
 	validates :<%=col.name%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>
 	validates :<%=col.name%>, presence: true<%elsif col.unique? == 1%>
