@@ -4,7 +4,8 @@
 
 <%@tables.each do |table|%>
 
-	<h3><%=table.name%> Model (consider naming this model file <%=table.name.singularize%>.rb)</h3>
+	<h3 style="display: inline;"><%=table.name%> Model</h3><br>
+	<h5 style="display: inline;">(consider naming this model file <%=table.name.singularize%>.rb)</h5>
 
 	<pre>class <%=table.name.singularize%> < ActiveRecord::Base
 
@@ -16,7 +17,8 @@ end</pre>
 
 <%@tables.each do |table|%>
 
-	<h3><%=table.name%> Migration (consider naming this table in the migration 'create_<%=table.name%>_table -- note the first line of the below follows this convention)</h3>
+	<h3 style="display: inline;"><%=table.name%> Migration</h3><br> 
+	<h5 style="display: inline;">(consider naming this table in the migration 'create_<%=table.name.downcase%>_table' -- note the first line of the below follows this convention)</h5>
 
 
 	<pre>class Create<%=table.name.capitalize%>Table < ActiveRecord::Migration
