@@ -56,9 +56,6 @@ post '/:id/code' do
 
 	@user = User.find_by('identifier = ?',id)
 	@tables = @user.tables 
-	@associations = @user.relationships
-
-	num_rel = @associations.count
 	num_tabs = @tables.count
 
 	array = Array(1..assoc_nums)
@@ -87,6 +84,26 @@ post '/:id/code' do
 		end
 
 		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,connector:connector,channel_id:cha_tab,user_id:@user.id)
+	end
+
+	@associations = @user.relationships
+	num_rel = @associations.count
+
+	if @associations.find_by(assoc: "has_belongs_many")
+		@habtm_assoc = @associations.where("assoc = ?", "has_belongs_many")
+		@habtm_assoc.each do |rel|
+			origin_t = @tables.find(rel.origin_id)
+			target_t = @tables.find(rel.target_id)
+			habtm_table = Table.create(name: "#{origin_t.name}_#{target_t.name}", user_id: @user.id)
+
+			or_name = origin_t.name.downcase.singularize
+			ta_name = target_t.name.downcase.singularize
+
+			Column.create(name: "#{or_name}_id", category: "integer", foreignkey?: 1, presence?: 0, unique?: 0, table_id: habtm_table.id)
+
+			Column.create(name: "#{ta_name}_id", category: "integer", foreignkey?: 1, presence?: 0, unique?: 0, table_id: habtm_table.id)
+		end
+
 	end
 
 	erb :code
