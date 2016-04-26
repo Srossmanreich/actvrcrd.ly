@@ -25,12 +25,18 @@ The product includes basic css and forms and a unique identifier for your output
 	* Upfront explanations of different table types
 	* Automatic file creation
 	* Better visual interface for schema design
+	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
+	* Fix bugs related to refreshing
+	* Currently you must have at least one association
 
 * Active Record functionality
 	* Polymorphic tables
 	* Self Join tables
+	* Breaking convention (e.g., with foreign_keys)
 
 * Design
 	* Better CSS
 
 Want to contribute? Feel free to contact me via GitHub or by email: Srossmanreich@gmail.com
+
+![Shoutout to the RockDove Scumbags][sbpete.jpg]

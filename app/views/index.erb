@@ -1,8 +1,10 @@
 <div class="schema-explanation">
   <h2>Design your schema</h2>
-  <h6 class="center-align"><a href="/">Home</a></h6>
+  <h6 class="center-align"><a href="/">Homepage</a></h6>
 
+  <div class="btn get-started"
   <h4 class="center-align"><a onclick="openModal()">Get your code</a></h4>
+  </div>
 
     <div id="openModal" class="modalDialog">
       <div>
@@ -15,9 +17,12 @@
           <div class="relation-items">
           </div>
 
-          <p class="add-rel"><a onclick="addRel()">Add a relationship</a></p>
+          <br>
+          <p class="add-rel" onclick="addRel()"><a>Add a relationship</a></p>
 
+          <div class="get-code-center">
           <p><input class="get-code" type="submit" value="Get your code!"></p>
+          </div>
         </form>
 
       </div>
@@ -27,15 +32,17 @@
 
   <div class="moretables">
     <form class="addtable at-active" method="POST" action="/<%=@id%>">
-      <p>Table name (e.g., Users, Votes --> keep it simple and keep it plural):</p>
+
+      <p>Table name (e.g., Users, Votes)<br>
+      --> keep it simple, capitalized, and plural:</p>
       <p><input type="text" name="tablename"></p>
-      <p>NOTE: an ID (integer) will automatically be generated with each table</p>
+      <p>Don't add an ID for your table -- it will come as a default</p>
+
+      <p><input class="submit-tables get-code" type="submit" value="Submit Table"></p>
       
-      <p><input class="submit-tables" type="submit" value="Submit Table"></p>
-      
-      <p><a class="another-col" href="#">Add another column</a></p>
+      <p><a class="another-col" href="#">Add a column</a></p>
       <div class="morecolumns">
-        <p>Enter a column header and type:</p>
+        <p>Enter a column header and type (lowercase):</p>
         <input class="header" type="text" name="1-header">
         <select name="1-type">
           <option value="integer">integer</option>
