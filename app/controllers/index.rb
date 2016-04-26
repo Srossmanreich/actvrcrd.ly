@@ -79,7 +79,15 @@ post '/:id/code' do
 
 		ori_tab = @tables.find_by(name:origin)
 		tar_tab = @tables.find_by(name:target)
-		cha_tab = @tables.find_by(name:channel)
+		
+		if @tables.find_by(name:channel)
+			cha_tab = @tables.find_by(name:channel).id
+		else
+			cha_tab = 0
+		end
+
+		puts "Channel table"
+		puts cha_tab
 
 		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,connector:connector,channel_id:cha_tab,user_id:@user.id)
 	end
