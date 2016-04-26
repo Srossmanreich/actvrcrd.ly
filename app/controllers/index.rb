@@ -78,7 +78,7 @@ post '/:id/code' do
 	tables = @user.tables 
 	num_tabs = tables.count
 
-	erb :tester
+	erb :code
 end
 
 
