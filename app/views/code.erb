@@ -1,0 +1,31 @@
+<h1>Here is your code!</h1>
+
+<h2>Models</h2>
+
+<%@tables.each do |table|%>
+
+	<h3><%=table.name%> Model (consider naming this model file <%=table.name.singularize%>.rb)</h3>
+
+	<pre>class <%=table.name.singularize%> < ActiveRecord::Base
+
+end</pre>
+
+<%end%>
+
+<h2>Migrations</h2>
+
+<%@tables.each do |table|%>
+
+	<h3><%=table.name%> Migration (consider naming this table in the migration 'create_<%=table.name%>_table -- note the first line of the below follows this convention)</h3>
+
+	<pre>class Create<%=table.name.capitalize%>Table < ActiveRecord::Migration
+	def change
+		create_table :<%=table.name.downcase%> do |t|
+
+			t.timestamps null: false
+		end
+	end
+end</pre>
+
+<%end%>
+

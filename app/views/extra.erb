@@ -1,0 +1,24 @@
+<!-- Model Skeleton -->
+
+      <script id="modelskels" type="x-tmpl-mustache">
+          <p>class {model_name} < ActiveRecord::Base</p>
+          <div class="mod-data">
+
+          </div>
+          <p>end</p>
+      </script>
+
+      <!-- Migration Skeleton -->
+
+      <script id="migskels" type="x-tmpl-mustache">
+          <p>class Create{table_name_up}Table < ActiveRecord::Migration</p>
+          <p>def change</p>
+          <p>create_table :{table_name_dw} do |t|</p>
+          <div class="mig-data">
+
+          </div>
+          <p>t.timestampes null: false</p>
+          <p>end</p>
+          <p>end</p>
+          <p>end</p>
+      </script>
