@@ -75,7 +75,7 @@ post '/:id/code' do
 		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,user_id:@user.id)
 	end
 	
-	tables = @user.tables 
+	@tables = @user.tables 
 	num_tabs = tables.count
 
 	erb :code
