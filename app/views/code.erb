@@ -22,7 +22,7 @@ end</pre>
 	<pre>class Create<%=table.name.capitalize%>Table < ActiveRecord::Migration
 	def change
 		create_table :<%=table.name.downcase%> do |t|<%table.columns.each do |col|%>
-			t.<%=col.category%> :<%=col.name%><%end%>
+			t.<%=col.category%> :<%=col.name%><%if col.foreignkey? == 1%>, index: true<%end%><%end%>
 			t.timestamps null: false
 		end
 	end
