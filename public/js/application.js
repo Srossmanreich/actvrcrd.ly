@@ -39,8 +39,6 @@ $(document).ready(function() {
 			$('.addtable').removeClass('at-active');
 			
 			$(this).parent().parent().hide();
-
-			console.log(input);
 			
 			var request = $.ajax({
 		      method: "POST",
