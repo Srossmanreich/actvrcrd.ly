@@ -18,6 +18,7 @@ end</pre>
 
 	<h3><%=table.name%> Migration (consider naming this table in the migration 'create_<%=table.name%>_table -- note the first line of the below follows this convention)</h3>
 
+
 	<pre>class Create<%=table.name.capitalize%>Table < ActiveRecord::Migration
 	def change
 		create_table :<%=table.name.downcase%> do |t|
