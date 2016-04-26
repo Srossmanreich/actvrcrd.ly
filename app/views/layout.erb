@@ -66,6 +66,7 @@
           <select name="{{index}}-rel">
             <option value="has_one">has one</option>
             <option value="has_many">has many</option>
+            <option value="many_many">has many through</option>
           </select>
 
           <select name="{{index}}-target">
@@ -73,6 +74,19 @@
             <option value="{{name}}">{{name}}</option>
             {{/tables}}
           </select>
+
+          <select name="{{index}}-through">
+            <option value="NA">N/A</option>
+            <option value="through">through</option>
+          </select>
+
+          <select name="{{index}}-channel">
+            <option value="NA">N/A</option>
+            {{#tables}}
+            <option value="{{name}}">{{name}}</option>
+            {{/tables}}
+          </select>
+
       </script>
 
       <%= yield %>
