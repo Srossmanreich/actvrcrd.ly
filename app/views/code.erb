@@ -6,35 +6,26 @@
 
 	<h3><%=table.name%> Model (consider naming this model file <%=table.name.singularize%>.rb)</h3>
 
-	<p>class <%=table.name.singularize%> < ActiveRecord::Base</p>
+	<pre>class <%=table.name.singularize%> < ActiveRecord::Base
 
-	<p>end</p>
+end</pre>
 
 <%end%>
 
+<h2>Migrations</h2>
 
+<%@tables.each do |table|%>
 
-<!-- Model Skeleton -->
+	<h3><%=table.name%> Migration (consider naming this table in the migration 'create_<%=table.name%>_table -- note the first line of the below follows this convention)</h3>
 
-      <script id="modelskels" type="x-tmpl-mustache">
-          <p>class {model_name} < ActiveRecord::Base</p>
-          <div class="mod-data">
+	<pre>class Create<%=table.name.capitalize%>Table < ActiveRecord::Migration
+	def change
+		create_table :<%=table.name.downcase%> do |t|
 
-          </div>
-          <p>end</p>
-      </script>
+			t.timestamps null: false
+		end
+	end
+end</pre>
 
-      <!-- Migration Skeleton -->
+<%end%>
 
-      <script id="migskels" type="x-tmpl-mustache">
-          <p>class Create{table_name_up}Table < ActiveRecord::Migration</p>
-          <p>def change</p>
-          <p>create_table :{table_name_dw} do |t|</p>
-          <div class="mig-data">
-
-          </div>
-          <p>t.timestampes null: false</p>
-          <p>end</p>
-          <p>end</p>
-          <p>end</p>
-      </script>
