@@ -59,18 +59,35 @@ post '/:id/code' do
 
 	array = Array(1..assoc_nums)
 
+	puts "This is the array with the number of assoc"
+	puts array
+
 	array.each do |num|
 
 		ori_key = "#{num}-origin"
 		rel_key = "#{num}-rel"
 		tar_key = "#{num}-target"
 
+		puts "key from form"
+		puts ori_key
+		puts rel_key
+		puts tar_key
+
 		origin = params[ori_key]
 		relation = params[rel_key]
 		target = params[tar_key]
 
+		puts "values based on keys"
+		puts origin
+		puts relation
+		puts target
+
 		ori_tab = tables.find_by(name:origin)
 		tar_tab = tables.find_by(name:target)
+
+		puts "origin table and target table"
+		puts ori_tab
+		puts tar_tab
 
 		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,user_id:@user.id)
 	end

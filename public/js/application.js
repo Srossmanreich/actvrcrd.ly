@@ -68,7 +68,7 @@ $(document).ready(function() {
 
 });
 
-var num = 1
+var num = 0
 
 function openModal() {
 	location.hash = "#openModal";

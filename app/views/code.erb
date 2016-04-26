@@ -9,9 +9,9 @@
 
 	<pre>class <%=table.name.singularize%> < ActiveRecord::Base
 	<%table.columns.each do |col|%><%if col.presence? == 1 && col.unique? == 1%>
-	validates :<%=col.category%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>
-	validates :<%=col.category%>, presence: true<%elsif col.unique? == 1%>
-	validates :<%=col.category%>, uniqueness: true<%end%><%end%>
+	validates :<%=col.name%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>
+	validates :<%=col.name%>, presence: true<%elsif col.unique? == 1%>
+	validates :<%=col.name%>, uniqueness: true<%end%><%end%>
 
 end</pre>
 
