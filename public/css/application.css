@@ -1,9 +1,32 @@
+/*Landing Page*/
+
+body {
+  font-family: Gill sans;
+}
+
+.intro{
+  border: 2px dotted red;
+  max-width: 80%;
+  margin: auto;
+}
+
+.sticker{
+  background-color: red;
+  color: white;
+  max-width: 35%;
+  font-size: 1.4em;
+  margin: auto;
+}
+
 .get-started{
-  border: 2px solid black;
+  border: 2px solid red;
+  text-decoration: none;
+  color: red;
 }
 
 .get-started:hover{
   background-color: red;
+  color: black;
 }
 
 .home-explanation h2, .home-explanation h3, .home-explanation p, .schema-explanation h2, .center-align {
@@ -19,6 +42,8 @@
   align-items: center;
   justify-content: center;
   margin: 10px 350px;
+  max-width: 15%;
+  margin: auto;
 }
 
 .addtable{

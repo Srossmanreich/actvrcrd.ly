@@ -29,6 +29,7 @@ The product includes basic css and forms and a unique identifier for your output
 * Active Record functionality
 	* Polymorphic tables
 	* Self Join tables
+	* Breaking convention (e.g., with foreign_keys)
 
 * Design
 	* Better CSS
