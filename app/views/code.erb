@@ -17,7 +17,7 @@
 	<h3 style="display: inline;"><%=table.name%> Model</h3><br>
 	<h5 style="display: inline;">(consider naming this model file <%=table.name.singularize%>.rb)</h5>
 
-	<pre><code class="ruby">class <%=table.name.singularize%> < ActiveRecord::Base<%if @associations.where(target_id: table.id)%><%relevant_rel = @associations.where(target_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.connector == "NA" && rel.assoc != "has_belongs_many"%>
+	<pre><code class="ruby">class <%=table.name.singularize%> < ActiveRecord::Base<%if @associations.where(target_id: table.id)%><%relevant_rel = @associations.where(target_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.connector == "NA" && rel.assoc != "has_belongs_many" && rel.assoc != "has_many_poly"%>
 	belongs_to :<%=(@tables.find(rel.origin_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_belongs_many" && rel.connector == "NA"%>
 	has_and_belongs_to_many :<%=(@tables.find(rel.origin_id)).name.downcase%><%end%><%if rel.assoc == "has_many_poly"%>
 	has_many :<%=(@tables.find(rel.origin_id)).name.downcase%>, as: :<%=(@tables.find(rel.origin_id)).columns.where(polymorphic?: 1)[0].name%><%end%><%end%><%end%><%if @associations.where(origin_id: table.id)%><%relevant_rel = @associations.where(origin_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.assoc == "has_one" && rel.connector == "NA"%>
@@ -58,7 +58,7 @@ end</code></pre>
 	<pre><code class="ruby">class Create<%=table_name%>Table < ActiveRecord::Migration
 	def change
 		create_table :<%=table.name.downcase%><%if table.name.include?("_")%>, id: false<%end%> do |t|<%table.columns.each do |col|%>
-			t.<%=col.category%> :<%=col.name%><%if col.foreignkey? == 1%>, index: true<%end%><%end%>
+			t.<%=col.category%> :<%=col.name%><%if col.polymorphic? == 1%>, polymorphic: true<%end%><%if col.foreignkey? == 1 || col.polymorphic? == 1%>, index: true<%end%><%end%>
 			<%if table.name.include?("_") == false%>t.timestamps null: false<%end%>
 		end
 	end
