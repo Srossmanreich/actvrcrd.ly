@@ -5,9 +5,6 @@ $(document).ready(function() {
 	var toAddTab = $('.moretables').html();
 	$('.another-tab').hide();
 
-	window.onbeforeunload = function() {
-  	alert("You are attempting to leave this page.");}
-
  //Add another column
 
  	$('.schema-explanation').on('click','.another-col',function(e){
