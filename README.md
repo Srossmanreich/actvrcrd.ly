@@ -29,6 +29,7 @@ The product includes basic css and forms and a unique identifier for your output
 	* Fix bugs related to refreshing
 	* Currently you must have at least one association
 	* Remind users to inclue foreign_keys
+	* Prevent user from doing impossible things (re: associations)
 
 * Active Record functionality
 	* Polymorphic tables
