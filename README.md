@@ -38,5 +38,3 @@ The product includes basic css and forms and a unique identifier for your output
 	* Better CSS?
 
 Want to contribute? Feel free to contact me via GitHub or by email: Srossmanreich@gmail.com
-
-![Shoutout to the RockDove Scumbags][/sbpete.jpg]
