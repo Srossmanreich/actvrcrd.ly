@@ -14,6 +14,7 @@ Schema design and code output (for models and migrations) works for:
 	* One-to-many
 	* Many-to-many (with through)
 	* Many-to-many (with has_and_belongs_to_many)
+	* Polymorphic tables
 
 The product includes basic css and forms and a unique identifier for your output
 
@@ -30,9 +31,9 @@ The product includes basic css and forms and a unique identifier for your output
 	* Currently you must have at least one association
 	* Remind users to inclue foreign_keys
 	* Prevent user from doing impossible things (re: associations)
+	* Add user guide (tips and tricks for using this tool)
 
 * Active Record functionality
-	* Polymorphic tables
 	* Self Join tables
 	* Breaking convention (e.g., with foreign_keys)
 
