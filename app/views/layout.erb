@@ -37,7 +37,7 @@
       <!-- Add more column headers -->
 
       <script id="morecols" type="x-tmpl-mustache">
-        <p>Enter a column header and type:</p>
+        <p>Enter a column header and type (lowercase):</p>
           <input class="header" type="text" name="{{index}}-header"> 
           <select name="{{index}}-type">
             <option value="integer">integer</option>
@@ -48,10 +48,13 @@
             <option value="date">date</option>
             <option value="time">time</option>
             <option value="boolean">boolean</option>
+            <option value="references">references</option>
           </select>
           <label><input type="checkbox" id="foreignkey" value="1" name="{{index}}-foreignkey">foreign key?</label>
           <label><input type="checkbox" id="presence" value="1" name="{{index}}-presence">presence required?</label>
-          <label><input type="checkbox" id="unique" value="1" name="{{index}}-unique">unique required?</label>
+          <label><input type="checkbox" id="unique" value="1" name="{{index}}-unique">unique?</label>
+          <label><input type="checkbox" id="poly" value="1" name="{{index}}-poly">polymorphic? <div style="font-size: 0.5em; display: inline;">(if yes, should be 'references' type and end in 'able')</div></label>
+
       </script>
 
       <!-- Dropdown in Modal -->
