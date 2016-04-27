@@ -12,7 +12,8 @@
 
 	<pre>class <%=table.name.singularize%> < ActiveRecord::Base<%if @associations.where(target_id: table.id)%><%relevant_rel = @associations.where(target_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.connector == "NA" && rel.assoc != "has_belongs_many"%>
 	belongs_to :<%=(@tables.find(rel.origin_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_belongs_many" && rel.connector == "NA"%>
-	has_and_belongs_to_many :<%=(@tables.find(rel.origin_id)).name.downcase%><%end%><%end%><%end%><%if @associations.where(origin_id: table.id)%><%relevant_rel = @associations.where(origin_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.assoc == "has_one" && rel.connector == "NA"%>
+	has_and_belongs_to_many :<%=(@tables.find(rel.origin_id)).name.downcase%><%end%><%if rel.assoc == "has_many_poly"%>
+	has_many :<%=(@tables.find(rel.origin_id)).name.downcase%>, as <%=(@tables.find(rel.origin_id)).columns.where("polymorphic? = ?",1).name%><%end%><%end%><%end%><%if @associations.where(origin_id: table.id)%><%relevant_rel = @associations.where(origin_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.assoc == "has_one" && rel.connector == "NA"%>
 	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_one" && rel.connector == "through"%>
 	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%>, through: :<%=(@tables.find(rel.channel_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_many" && rel.connector == "NA"%>
 	has_many :<%=(@tables.find(rel.target_id)).name.downcase%><%end%><%if rel.assoc == "has_many" && rel.connector == "through"%>
