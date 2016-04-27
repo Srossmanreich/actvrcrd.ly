@@ -21,7 +21,7 @@
       <script id="table-diagram" type="x-tmpl-mustache">
         <p class="margin-left table-name">{{tablename}}</p>
         <table>
-         <tr><th>Name</th><th>Category</th><th>Presence?</th><th>Unique?</th><th>Foreign_key?</th></tr>
+         <tr><th>Name</th><th>Category</th><th>Presence?</th><th>Unique?</th><th>Foreign_key?</th><th>Polymorphic?</th></tr>
           {{#tablearray}}
             <tr>
               <td>{{name}}</td>
@@ -29,6 +29,7 @@
               <td>{{presence?}}</td>
               <td>{{unique?}}</td>
               <td>{{foreignkey?}}</td>
+              <td>{{polymorphic?}}</td>
             </tr>
           {{/tablearray}}
         </table>
