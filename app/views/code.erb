@@ -9,6 +9,8 @@
 <div class="models-view">
 <h2>Models</h2>
 
+<%poly_check = 0%>
+
 <%@tables.each do |table|%>
 
 	<%if table.name.include?("_") == false%>
@@ -18,13 +20,13 @@
 	<pre><code class="ruby">class <%=table.name.singularize%> < ActiveRecord::Base<%if @associations.where(target_id: table.id)%><%relevant_rel = @associations.where(target_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.connector == "NA" && rel.assoc != "has_belongs_many"%>
 	belongs_to :<%=(@tables.find(rel.origin_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_belongs_many" && rel.connector == "NA"%>
 	has_and_belongs_to_many :<%=(@tables.find(rel.origin_id)).name.downcase%><%end%><%if rel.assoc == "has_many_poly"%>
-	has_many :<%=(@tables.find(rel.origin_id)).name.downcase%>, as <%=(@tables.find(rel.origin_id)).columns.where(polymorphic?: 1).name%><%end%><%end%><%end%><%if @associations.where(origin_id: table.id)%><%relevant_rel = @associations.where(origin_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.assoc == "has_one" && rel.connector == "NA"%>
+	has_many :<%=(@tables.find(rel.origin_id)).name.downcase%>, as: :<%=(@tables.find(rel.origin_id)).columns.where(polymorphic?: 1)[0].name%><%end%><%end%><%end%><%if @associations.where(origin_id: table.id)%><%relevant_rel = @associations.where(origin_id: table.id)%><%relevant_rel.each do |rel| %><%if rel.assoc == "has_one" && rel.connector == "NA"%>
 	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_one" && rel.connector == "through"%>
 	has_one :<%=(@tables.find(rel.target_id)).name.downcase.singularize%>, through: :<%=(@tables.find(rel.channel_id)).name.downcase.singularize%><%end%><%if rel.assoc == "has_many" && rel.connector == "NA"%>
 	has_many :<%=(@tables.find(rel.target_id)).name.downcase%><%end%><%if rel.assoc == "has_many" && rel.connector == "through"%>
 	has_many :<%=(@tables.find(rel.target_id)).name.downcase%>, through: :<%=(@tables.find(rel.channel_id)).name.downcase%><%end%><%if rel.assoc == "has_belongs_many" && rel.connector == "NA"%>
-	has_and_belongs_to_many :<%=(@tables.find(rel.target_id)).name.downcase%><%end%><%if rel.assoc == "has_many_poly"%>
-	belongs_to :<%=(@tables.find(rel.origin_id)).columns.where(polymorphic?: 1).name%>, polymorphic: true<%end%><%end%><%end%>
+	has_and_belongs_to_many :<%=(@tables.find(rel.target_id)).name.downcase%><%end%><%if rel.assoc == "has_many_poly" && poly_check != rel.origin_id%>
+	belongs_to :<%=(@tables.find(rel.origin_id)).columns.where(polymorphic?: 1)[0].name%>, polymorphic: true<%poly_check=rel.origin_id%><%end%><%end%><%end%>
 	<%table.columns.each do |col|%><%if col.presence? == 1 && col.unique? == 1%>
 	validates :<%=col.name%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>
 	validates :<%=col.name%>, presence: true<%elsif col.unique? == 1%>
