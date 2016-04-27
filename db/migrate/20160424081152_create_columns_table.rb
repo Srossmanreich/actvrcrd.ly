@@ -6,6 +6,7 @@ class CreateColumnsTable < ActiveRecord::Migration
       t.integer :foreignkey?
       t.integer :presence?
       t.integer :unique?
+      t.integer :polymorphic?
       t.integer :table_id, index: true
       t.timestamps null: false
     end

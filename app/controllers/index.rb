@@ -40,7 +40,13 @@ post '/:id' do
 			uniq = 0
 		end
 
-		Column.create(name: params["#{index}-header"], category: params["#{index}-type"], foreignkey?: fkey, presence?: pres, unique?: uniq, table_id: table.id)
+		if params["#{index}-poly"]
+			poly = 1
+		else
+			poly = 0
+		end
+
+		Column.create(name: params["#{index}-header"], category: params["#{index}-type"], foreignkey?: fkey, presence?: pres, unique?: uniq, polymorphic?: poly, table_id: table.id)
 	end
 
 	send = {columns: table.columns, tablename: params[:tablename]}
@@ -99,9 +105,9 @@ post '/:id/code' do
 			or_name = origin_t.name.downcase.singularize
 			ta_name = target_t.name.downcase.singularize
 
-			Column.create(name: "#{or_name}_id", category: "integer", foreignkey?: 1, presence?: 0, unique?: 0, table_id: habtm_table.id)
+			Column.create(name: "#{or_name}_id", category: "integer", foreignkey?: 1, presence?: 0, unique?: 0, polymorphic?: 0, table_id: habtm_table.id)
 
-			Column.create(name: "#{ta_name}_id", category: "integer", foreignkey?: 1, presence?: 0, unique?: 0, table_id: habtm_table.id)
+			Column.create(name: "#{ta_name}_id", category: "integer", foreignkey?: 1, presence?: 0, unique?: 0, polymorphic?: 0, table_id: habtm_table.id)
 		end
 
 	end
