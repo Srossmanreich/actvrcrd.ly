@@ -48,8 +48,9 @@ $(document).ready(function() {
 	      		var template2 = $("#table-diagram").html();
 	      		var content2 = Mustache.render(template2, {tablename: data.tablename, tablearray: data.columns});
 
-				$('.moretables').prepend(content2);
+				$('.fill-out-prompt').prepend(content2);
 				$('.another-tab').show();
+				$('.prompt-text').hide();
 				template2 = "";
 	    		content2 = "";
 	    	})

@@ -56,16 +56,12 @@ body {
   border: 2px solid black;
 }
 
-.another-tab{
-  margin: 0px 50px;
-}
-
 .margin-left, table {
   margin-left: 50px;
 }
 
 table {
-  margin-bottom: 5%;
+  margin: auto;
 }
 
 table tr {
@@ -210,8 +206,14 @@ th, td {
   margin-bottom: 10px;
 }
 
+.center-button{
+  align-content: center;
+  margin: auto;
+  text-align: center;
+}
+
 .another-tab{
-  margin: 0px 150px;
+  margin-top: 4%;
   text-decoration: none;
   border: 2px solid red;
   background-color: red;

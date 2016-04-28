@@ -22,7 +22,8 @@ The product includes basic css and forms and a unique identifier for your output
 
 * User experience
 	* Unique URL to view and share your code
-	* Ability to update existing tables
+	* Ability to update existing tables before getting code
+	* Ability to delete existing tables before getting code
 	* Upfront explanations of different table types
 	* Automatic file creation
 	* Better visual interface for schema design
