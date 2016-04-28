@@ -231,6 +231,11 @@ th, td {
   font-size: 0.9em;
 }
 
+.edit-table{
+  text-decoration: underline;
+  color: blue;
+}
+
 /*Code page*/
 
 .codepage {

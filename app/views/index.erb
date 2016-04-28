@@ -36,7 +36,7 @@
 
     <%@tables.each do |table|%>
     <div>
-      <p class="center-align table-name"><%=table.name%>&nbsp;(<a href="#" id="edit-table-<%=table.id%>" class="edit-table edit-delete">edit</a> &nbsp;|&nbsp;<a href="#" id="delete-table-<%=table.id%>" class="delete-table edit-delete">delete</a>)</p>
+      <p class="center-align table-name"><%=table.name%> &nbsp;(<a href="#" id="delete-table-<%=table.id%>" class="delete-table edit-delete">delete</a>)</p>
         <table>
          <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
          <%if table.columns%>
@@ -52,6 +52,7 @@
           <%end%>
         <%end%>
         </table>
+
     </div>
     <%end%>
   
@@ -61,7 +62,7 @@
   </div>
 
   <div class="moretables">
-    <form class="addtable at-active" method="POST" action="/<%=@id%>">
+    <form id="add-table-form" class="addtable at-active" method="POST" action="/<%=@id%>">
 
       <p>Table name (e.g., Users, Votes)<br>
       --> keep it simple, capitalized, and plural:</p>
