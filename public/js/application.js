@@ -76,7 +76,7 @@ $(document).ready(function() {
 		})
 
 		request.done(function(data) {
-			$('#delete-table-'+data.table_id).parent().parent().remove();
+			$('#delete-table-'+data.table_id).parent().parent().empty();
 		})
  		
  	})
