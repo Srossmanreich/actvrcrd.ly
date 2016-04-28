@@ -21,11 +21,11 @@
       <script id="table-diagram" type="x-tmpl-mustache">
         <p class="margin-left table-name">{{tablename}}</p>
         <table>
-         <tr><th>Name</th><th>Category</th><th>Presence?</th><th>Unique?</th><th>Foreign_key?</th><th>Polymorphic?</th></tr>
+         <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
           {{#tablearray}}
             <tr>
-              <td>{{name}}</td>
-              <td>{{category}}</td>
+              <td class="item-main">{{name}}</td>
+              <td class="item-main">{{category}}</td>
               <td>{{presence?}}</td>
               <td>{{unique?}}</td>
               <td>{{foreignkey?}}</td>

@@ -2,6 +2,7 @@
 
 body {
   font-family: Gill sans;
+  margin-bottom: 8%;
 }
 
 .intro{
@@ -63,13 +64,35 @@ body {
   margin-left: 50px;
 }
 
+table {
+  margin-bottom: 5%;
+}
+
 table tr {
   text-align: center;
 }
 
-table th, table td {
-    border: 1px solid black;
+.tab-main{
+    border: 1px solid red;
+    color: white;
+    background-color: red;
     border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.tab-vals{
+  font-size: 0.6em;
+  border: 1px solid gray;
+  background-color: gray;
+}
+
+.item-main{
+  background-color: #FFE4E1
+}
+
+.table-name {
+  font-size: 1.5em;
+  color: red;
 }
 
 th, td {
