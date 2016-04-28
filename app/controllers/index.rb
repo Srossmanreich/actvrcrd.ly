@@ -93,7 +93,6 @@ post '/:id/code' do
 	end
 
 	@associations = @user.relationships
-	num_rel = @associations.count
 
 	if @associations.find_by(assoc: "has_belongs_many")
 		@habtm_assoc = @associations.where("assoc = ?", "has_belongs_many")
@@ -111,6 +110,17 @@ post '/:id/code' do
 		end
 
 	end
+
+	redirect "/#{id}/code"
+
+end
+
+get '/:id/code' do
+	id = params[:id]
+
+	@user = User.find_by('identifier = ?',id)
+	@tables = @user.tables 
+	@associations = @user.relationships
 
 	# Logic helpers
 
@@ -168,7 +178,7 @@ post '/:id/code' do
 	end
 
 	erb :code
-end
 
+end
 
 
