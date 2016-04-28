@@ -28,7 +28,37 @@
       </div>
     </div>
 
-  <p class="center-align">Fill out the form below to create your table:</p>
+  <p class="center-align">Current tables:</p>
+
+  <%if @tables.length < 1%>
+    <p class="center-align no-tables">- No Tables -</p>
+  <%end%>
+
+    <%@tables.each do |table|%>
+    <div>
+      <p class="center-align table-name"><%=table.name%>&nbsp;(<a href="#" id="edit-table-<%=table.id%>" class="edit-table edit-delete">edit</a> &nbsp;|&nbsp;<a href="#" id="delete-table-<%=table.id%>" class="delete-table edit-delete">delete</a>)</p>
+        <table>
+         <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
+         <%if table.columns%>
+          <%table.columns.each do |col|%>
+            <tr>
+              <td class="item-main"><%=col.name%></td>
+              <td class="item-main"><%=col.category%></td>
+              <td><%=col.presence?%></td>
+              <td><%=col.unique?%></td>
+              <td><%=col.foreignkey?%></td>
+              <td><%=col.polymorphic?%></td>
+            </tr>
+          <%end%>
+        <%end%>
+        </table>
+    </div>
+    <%end%>
+  
+
+  <div class="fill-out-prompt">
+    <p class="center-align prompt-text">Fill out the form below to create your table:</p>
+  </div>
 
   <div class="moretables">
     <form class="addtable at-active" method="POST" action="/<%=@id%>">
@@ -63,6 +93,8 @@
     </form>
   </div>
   
+  <div class="center-button">
   <p><a href="#"><input class="another-tab" type="submit" value="Create another table"></a></p>
+  </div>
 
 </div>
