@@ -19,7 +19,7 @@
       <!-- Table diagrams -->
 
       <script id="table-diagram" type="x-tmpl-mustache">
-        <p class="center-align table-name">{{tablename}}&nbsp;(<a href="#" id={{table_edit}} class="edit-table edit-delete">edit</a> &nbsp;|&nbsp;<a href="#" id={{table_delete}} class="delete-table edit-delete">delete</a>)</p>
+        <p class="center-align table-name">{{tablename}} &nbsp;(<a href="#" id={{table_delete}} class="delete-table edit-delete">delete</a>)</p>
         <table>
          <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
           {{#tablearray}}
