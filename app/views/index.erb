@@ -36,7 +36,8 @@
 
     <%@tables.each do |table|%>
     <div>
-      <p class="center-align table-name"><%=table.name%> &nbsp;(<a href="#" id="delete-table-<%=table.id%>" class="delete-table edit-delete">delete</a>)</p>
+      <p class="center-align table-name"><%=table.name%></p> 
+      <p class="center-align remove-margin">&nbsp;(<a href="#" id="delete-table-<%=table.id%>" class="delete-table edit-delete">delete</a>)</p>
         <table>
          <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
          <%if table.columns%>
