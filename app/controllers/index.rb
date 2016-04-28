@@ -137,22 +137,22 @@ post '/:id/code' do
 	def tab_name(tables,rel,option=1)
 		case option
 			when 1
-				tables.find(rel.origin_id).name.downcase.singularize
+				return tables.find(rel.origin_id).name.downcase.singularize
 			when 2
-				tables.find(rel.origin_id).name.downcase
+				return tables.find(rel.origin_id).name.downcase
 			when 3
-				tables.find(rel.target_id).name.downcase.singularize
+				return tables.find(rel.target_id).name.downcase.singularize
 			when 4
-				tables.find(rel.target_id).name.downcase
+				return tables.find(rel.target_id).name.downcase
 			when 5
-				tables.find(rel.channel_id).name.downcase.singularize
+				return tables.find(rel.channel_id).name.downcase.singularize
 			when 6
-				tables.find(rel.channel_id).name.downcase
+				return tables.find(rel.channel_id).name.downcase
 		end
 	end
 
 	def poly_name(tables,rel)
-		tables.find(rel.origin_id)).columns.where(polymorphic?: 1)[0].name
+		tables.find(rel.origin_id).columns.where(polymorphic?: 1)[0].name
 	end
 
 	@poly_check = 0
