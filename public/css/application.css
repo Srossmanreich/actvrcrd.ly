@@ -227,6 +227,10 @@ th, td {
   background-color: white;
 }
 
+.edit-delete{
+  font-size: 0.9em;
+}
+
 /*Code page*/
 
 .codepage {

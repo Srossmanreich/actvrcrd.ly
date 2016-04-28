@@ -40,5 +40,6 @@ The product includes basic css and forms and a unique identifier for your output
 
 * Design
 	* Better CSS?
+	* Improve RESTfulness of routes
 
 Want to contribute? Feel free to contact me via GitHub or by email: Srossmanreich@gmail.com

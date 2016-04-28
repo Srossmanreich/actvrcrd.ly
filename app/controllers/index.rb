@@ -1,13 +1,24 @@
 get '/' do
-	session.clear
+	session.delete(:identifier)
 	@random = SecureRandom.uuid
-	session[:identifier] = @random
 	erb :landing
 end
 
 get '/:id' do 
 	@id = params[:id]
-	user = User.create(identifier: @id)
+	if session[:identifier] == @id
+		user = User.find_by(identifier: @id)
+	else
+		session[:identifier] = @id
+		user = User.create(identifier: @id)
+	end
+
+	if user.tables
+		@tables = user.tables
+	else
+		@tables = []
+	end
+
 	erb :index
 end
 
@@ -49,7 +60,7 @@ post '/:id' do
 		Column.create(name: params["#{index}-header"], category: params["#{index}-type"], foreignkey?: fkey, presence?: pres, unique?: uniq, polymorphic?: poly, table_id: table.id)
 	end
 
-	send = {columns: table.columns, tablename: params[:tablename]}
+	send = {columns: table.columns, table_id: table.id, tablename: params[:tablename]}
 	@user_tables = user.tables
 	content_type :json
     send.to_json
