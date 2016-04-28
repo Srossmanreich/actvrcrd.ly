@@ -155,7 +155,7 @@ post '/:id/code' do
 		tables.find(rel.origin_id).columns.where(polymorphic?: 1)[0].name
 	end
 
-	@poly_check = 0
+	@poly_check = []
 
 	def table_split(table)
 		if table.name.include?("_")

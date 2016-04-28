@@ -23,8 +23,8 @@
 	has_one :<%=tab_name(@tables,rel,3)%>, through: :<%=tab_name(@tables,rel,5)%><%end%><%if ass_check(rel,"has_many") && con_check(rel, "NA")%>
 	has_many :<%=tab_name(@tables,rel,4)%><%end%><%if ass_check(rel,"has_many") && con_check(rel,"through")%>
 	has_many :<%=tab_name(@tables,rel,4)%>, through: :<%=tab_name(@tables,rel,6)%><%end%><%if ass_check(rel,"has_belongs_many") && con_check(rel,"NA")%>
-	has_and_belongs_to_many :<%=tab_name(@tables,rel,4)%><%end%><%if ass_check(rel,"has_many_poly") && @poly_check != rel.origin_id%>
-	belongs_to :<%=poly_name(@tables,rel)%>, polymorphic: true<%@poly_check=rel.origin_id%><%end%><%end%><%end%>
+	has_and_belongs_to_many :<%=tab_name(@tables,rel,4)%><%end%><%if ass_check(rel,"has_many_poly") && !@poly_check.include?(rel.origin_id)%>
+	belongs_to :<%=poly_name(@tables,rel)%>, polymorphic: true<%@poly_check<<rel.origin_id%><%end%><%end%><%end%>
 	<%table.columns.each do |col|%><%if col.presence? == 1 && col.unique? == 1%>
 	validates :<%=col.name%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>
 	validates :<%=col.name%>, presence: true<%elsif col.unique? == 1%>
