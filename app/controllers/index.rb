@@ -192,4 +192,13 @@ get '/:id/code' do
 
 end
 
+delete '/:id' do
+
+	Table.destroy(params[:table_id])
+	send = {table_id: params[:table_id]}
+	content_type :json
+    send.to_json
+
+end
+
 

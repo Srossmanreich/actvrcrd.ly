@@ -67,7 +67,17 @@ $(document).ready(function() {
  		e.preventDefault();
 
  		var id = $(this).attr('id').split("-")[2]
+ 		var link = "/"+id
  		
+ 		var request = $.ajax({
+		      method: "DELETE",
+		      url: link,
+		      data: {table_id: id}
+		})
+
+		request.done(function(data) {
+			$('#delete-table-'+data.table_id).parent().parent().remove();
+		})
  		
  	})
 
