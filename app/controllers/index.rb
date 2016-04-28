@@ -112,6 +112,61 @@ post '/:id/code' do
 
 	end
 
+	# Logic helpers
+
+	def ass_target(id)
+		@associations.where(target_id: id)
+	end
+
+	def ass_origin(id)
+		@associations.where(origin_id: id)
+	end
+
+	def ass_check(rel,result)
+		rel.assoc == result
+	end
+
+	def ass_not(rel,result)
+		rel.assoc != result
+	end
+
+	def con_check(rel,result)
+		rel.connector == result
+	end
+
+	def tab_name(tables,rel,option=1)
+		case option
+			when 1
+				tables.find(rel.origin_id).name.downcase.singularize
+			when 2
+				tables.find(rel.origin_id).name.downcase
+			when 3
+				tables.find(rel.target_id).name.downcase.singularize
+			when 4
+				tables.find(rel.target_id).name.downcase
+			when 5
+				tables.find(rel.channel_id).name.downcase.singularize
+			when 6
+				tables.find(rel.channel_id).name.downcase
+		end
+	end
+
+	def poly_name(tables,rel)
+		tables.find(rel.origin_id)).columns.where(polymorphic?: 1)[0].name
+	end
+
+	@poly_check = 0
+
+	def table_split(table)
+		if table.name.include?("_")
+			array = table.name.split("_")
+			array[1].capitalize!
+			array.join("")
+		else
+			table.name.capitalize
+		end
+	end
+
 	erb :code
 end
 
