@@ -17,15 +17,15 @@
 	<h3 style="display: inline;"><%=table.name%> Model</h3><br>
 	<h5 style="display: inline;">(consider naming this model file <%=table.name.singularize%>.rb)</h5>
 
-	<pre><code class="ruby">class <%=table.name.singularize%> < ActiveRecord::Base<%if ass_target(table.id)%><%relevant_rel = ass_target(table.id)%><%relevant_rel.each do |rel| %><%if con_check(rel,"NA") && ass_not(rel,"has_belongs_many") && ass_not(rel,"has_many_poly")%>
-	belongs_to :<%=tab_name(@tables,rel)%><%end%><%if ass_check(rel,"has_belongs_many") && con_check(rel,"NA")%>
-	has_and_belongs_to_many :<%=tab_name(@tables,rel,2)%><%end%><%if ass_check(rel,"has_many_poly")%>
+	<pre><code class="ruby">class <%=table.name.singularize%> < ActiveRecord::Base<%if ass_target(table.id)%><%relevant_rel = ass_target(table.id)%><%relevant_rel.each do |rel| %><%if con_check(rel,"NA") && ass_not(rel,"has_and_belongs_to_many") && ass_not(rel,"poly_belongs_to")%>
+	belongs_to :<%=tab_name(@tables,rel)%><%end%><%if ass_check(rel,"has_and_belongs_to_many") && con_check(rel,"NA")%>
+	has_and_belongs_to_many :<%=tab_name(@tables,rel,2)%><%end%><%if ass_check(rel,"poly_belongs_to")%>
 	has_many :<%=tab_name(@tables,rel,2)%>, as: :<%=poly_name(@tables,rel)%><%end%><%end%><%end%><%if ass_origin(table.id)%><%relevant_rel = ass_origin(table.id)%><%relevant_rel.each do |rel| %><%if ass_check(rel,"has_one") && con_check(rel,"NA")%>
 	has_one :<%=tab_name(@tables,rel,3)%><%end%><%if ass_check(rel,"has_one") && con_check(rel,"through")%>
 	has_one :<%=tab_name(@tables,rel,3)%>, through: :<%=tab_name(@tables,rel,5)%><%end%><%if ass_check(rel,"has_many") && con_check(rel, "NA")%>
 	has_many :<%=tab_name(@tables,rel,4)%><%end%><%if ass_check(rel,"has_many") && con_check(rel,"through")%>
-	has_many :<%=tab_name(@tables,rel,4)%>, through: :<%=tab_name(@tables,rel,6)%><%end%><%if ass_check(rel,"has_belongs_many") && con_check(rel,"NA")%>
-	has_and_belongs_to_many :<%=tab_name(@tables,rel,4)%><%end%><%if ass_check(rel,"has_many_poly") && !@poly_check.include?(rel.origin_id)%>
+	has_many :<%=tab_name(@tables,rel,4)%>, through: :<%=tab_name(@tables,rel,6)%><%end%><%if ass_check(rel,"has_and_belongs_to_many") && con_check(rel,"NA")%>
+	has_and_belongs_to_many :<%=tab_name(@tables,rel,4)%><%end%><%if ass_check(rel,"poly_belongs_to") && !@poly_check.include?(rel.origin_id)%>
 	belongs_to :<%=poly_name(@tables,rel)%>, polymorphic: true<%@poly_check<<rel.origin_id%><%end%><%end%><%end%>
 	<%table.columns.each do |col|%><%if col.presence? == 1 && col.unique? == 1%>
 	validates :<%=col.name%>, presence: true, uniqueness: true<%elsif col.presence? == 1%>

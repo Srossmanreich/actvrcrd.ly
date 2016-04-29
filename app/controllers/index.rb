@@ -122,8 +122,8 @@ post '/:id/code' do
 
 	@associations = @user.relationships
 
-	if @associations.find_by(assoc: "has_belongs_many")
-		@habtm_assoc = @associations.where("assoc = ?", "has_belongs_many")
+	if @associations.find_by(assoc: "has_and_belongs_to_many")
+		@habtm_assoc = @associations.where("assoc = ?", "has_and_belongs_to_many")
 		@habtm_assoc.each do |rel|
 			origin_t = @tables.find(rel.origin_id)
 			target_t = @tables.find(rel.target_id)

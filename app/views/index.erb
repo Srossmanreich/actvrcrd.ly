@@ -16,9 +16,17 @@
           <div class="remove-margin-top" style="font-size:0.7em;"><p class="remove-margin-top">(If editing, do not add relationships you've already added to your tables. Only add new relationships.)</p></div>
 
           <div class="existing-relations">
-            <%@relationships.each do |rel| %>
-
+            <p>Existing relationships:<br>
+            <%if @relationships.length > 0%>
+              <%@relationships.each do |rel| %>
+                + <%=Table.find(rel.origin_id).name%>&nbsp;<%=rel.assoc%>&nbsp;<%=Table.find(rel.target_id).name%>
+                <% if rel.channel_id != 0%>
+                <%=rel.connector Table.find(rel.channel_id).name %>
+                <%end%>
+                <br>
+              <%end%>
             <%end%>
+            </p>
           </div>
 
           <div class="relation-items">
