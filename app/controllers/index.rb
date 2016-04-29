@@ -73,16 +73,20 @@ post '/:id/code' do
 	if params.keys.length > 3
 		assoc_nums = params.keys[-4].split("-")[0].to_i
 		else
-		assoc_nums = 1
+		assoc_nums = 0
 	end
 
 	@user = User.find_by('identifier = ?',@id)
 	@tables = @user.tables 
 	num_tabs = @tables.count
 
-	array = Array(1..assoc_nums)
+	if assoc_nums >= 1
+		array = Array(1..assoc_nums)
+	else
+		array = []
+	end
 
-	if array.length > 1
+	if array.length >= 1
 		array.each do |num|
 
 			ori_key = "#{num}-origin"
