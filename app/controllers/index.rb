@@ -214,6 +214,25 @@ delete '/:id' do
 	table = Table.find(params[:table_id])
 	user = User.find(table.user_id)
 
+	table1=nil
+	table2=nil
+
+	if table.name.include?("_")
+		table_array = table.name.split("_")
+		table1=table_array[0]
+		table2=table_array[1]
+	end
+
+	@to_delete = []
+
+	user.relationships.each do |rel|
+		if Table.find(rel.origin_id).name == table1 && Table.find(rel.target_id).name == table2 && rel.assoc == "has_and_belongs_to_many"
+			@to_delete << rel.id
+		end
+	end
+
+	@remove = @to_delete.uniq
+
 	Table.destroy(params[:table_id])
 
 	if user.tables.length < 1
@@ -242,13 +261,18 @@ delete '/:id' do
 		end
 	end
 
-	@remove = nil
-
 	if @associations.length > 0
-		@remove = @associations.uniq
-			@remove.each do |rel_id|
-				Relationship.destroy(rel_id)
-			end
+		@associations.each do |rel_id|
+			@remove << rel_id
+		end
+	end
+
+	@remove_uniq = @remove.uniq
+	
+	if @remove_uniq.length > 0
+		@remove_uniq.each do |rel_id|
+			Relationship.destroy(rel_id)
+		end
 	end
 
 	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove}
