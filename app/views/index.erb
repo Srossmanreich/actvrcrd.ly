@@ -24,6 +24,7 @@
                   <% if rel.channel_id != 0%>
                   <%=rel.connector%>&nbsp;<%=Table.find(rel.channel_id).name %>
                   <%end%>
+                  <div style="display:inline;" class="fake-link delete-assoc" id="<%=rel.id%>-rel-del">(delete)</div>
                 </div>
               <%end%>
             <%end%>

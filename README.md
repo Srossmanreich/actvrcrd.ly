@@ -27,7 +27,6 @@ The product includes basic css and forms and a unique identifier for your output
 	* Prevent user from doing impossible things (re: associations)
 	* Add user guide (tips and tricks for using this tool)
 	* Upfront explanations of different table types
-	* Remove associations (without deleting tables)
 	* Remove many-to-many table if one of the tables associated with it is deleted
 
 * Active Record functionality

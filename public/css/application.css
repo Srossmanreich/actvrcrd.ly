@@ -267,11 +267,11 @@ th, td {
   color: red;
 }
 
-.get-short:hover{
+.get-short:hover, .fake-link:hover{
   text-decoration: underline;
 }
 
-.short-url{
+.short-url, .fake-link{
   color: blue;
 }
 
