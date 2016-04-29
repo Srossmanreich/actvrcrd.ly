@@ -122,7 +122,7 @@ post '/:id/code' do
 
 	end
 
-	redirect "/#{@id}/code"
+		redirect "/#{@id}/code"
 
 end
 

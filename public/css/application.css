@@ -254,3 +254,16 @@ th, td {
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
+.get-short{
+  color: red;
+}
+
+.get-short:hover{
+  text-decoration: underline;
+}
+
+.short-url{
+  color: blue;
+}
+
