@@ -26,10 +26,8 @@ The product includes basic css and forms and a unique identifier for your output
 	* Automatic file creation
 	* Better visual interface for schema design
 	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
-	* Remind users to include foreign_keys
 	* Prevent user from doing impossible things (re: associations)
 	* Add user guide (tips and tricks for using this tool)
-	* Fix add more relationships bug
 
 * Active Record functionality
 	* Self Join tables
