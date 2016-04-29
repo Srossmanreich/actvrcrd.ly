@@ -242,6 +242,8 @@ delete '/:id' do
 		end
 	end
 
+	@remove = nil
+
 	if @associations.length > 0
 		@remove = @associations.uniq
 			@remove.each do |rel_id|
@@ -249,7 +251,7 @@ delete '/:id' do
 			end
 	end
 
-	send = {table_id: params[:table_id], all_gone: all_gone}
+	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove}
 	content_type :json
     send.to_json
 
