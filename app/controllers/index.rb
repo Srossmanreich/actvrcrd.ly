@@ -275,7 +275,7 @@ delete '/:id' do
 		all_gone = 0
 	end
 
-	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove}
+	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove_uniq}
 	content_type :json
     send.to_json
 

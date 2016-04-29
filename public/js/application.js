@@ -77,9 +77,15 @@ $(document).ready(function() {
 
 		request.done(function(data) {
 
+			console.log(data);
+
 			$('#delete-table-'+data.table_id).parent().parent().empty();
 
-			$('#'+data.remove_ass+"-rel").empty();
+			if(data.remove_ass.length != 0){
+				for(var i in data.remove_ass){
+					$('#'+data.remove_ass[i]+"-rel").empty();
+				}
+			}
 			
 			if(data.all_gone === 1){
 				$('.no-tables').show();
