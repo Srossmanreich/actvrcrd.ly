@@ -90,9 +90,6 @@ $(document).ready(function() {
  		var id = $('.id-to-grab').attr('href').split("/")[1]
  		var data= JSON.stringify({longUrl: url});
 
-
- 		'{ "longUrl": "http://www.google.com"}'
-
  		var request = $.ajax({
 		      method: "POST",
 		      url: "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyBy4wW6JoeuTyhGq0Lvb-dyqQI7npzA0Mc",

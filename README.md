@@ -16,7 +16,7 @@ Schema design and code output (for models and migrations) works for:
 	* Many-to-many (with has_and_belongs_to_many)
 	* Polymorphic tables
 
-The product includes basic css and forms and a unique identifier for your output
+The product includes basic css and forms and a unique identifier for your output as well as a unique short url 
 
 ##Planned updates:
 
@@ -27,9 +27,8 @@ The product includes basic css and forms and a unique identifier for your output
 	* Automatic file creation
 	* Better visual interface for schema design
 	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
-	* Fix bugs related to refreshing
 	* Currently you must have at least one association
-	* Remind users to inclue foreign_keys
+	* Remind users to include foreign_keys
 	* Prevent user from doing impossible things (re: associations)
 	* Add user guide (tips and tricks for using this tool)
 	* Fix add more relationships bug
