@@ -281,4 +281,14 @@ delete '/:id' do
 
 end
 
+delete '/associations/:id' do
+	rel_id = params[:rel_id]
+	
+	Relationship.destroy(rel_id)
+
+	send = {rel_id: rel_id}
+	content_type :json
+    send.to_json
+
+end
 

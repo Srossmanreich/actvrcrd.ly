@@ -88,6 +88,26 @@ $(document).ready(function() {
  		
  	})
 
+ //Delete association (from modal)
+
+ 	$('.schema-explanation').on('click','.delete-assoc',function(e){
+ 		e.preventDefault();
+
+ 		var id = $(this).attr('id').split("-")[0]
+ 		var link = "/associations/"+id
+ 		
+ 		var request = $.ajax({
+		      method: "DELETE",
+		      url: link,
+		      data: {rel_id: id}
+		})
+
+		request.done(function(data) {
+			$('#'+data.rel_id+"-rel").empty();
+		})
+ 		
+ 	})
+
 
  //Get short URL
 
