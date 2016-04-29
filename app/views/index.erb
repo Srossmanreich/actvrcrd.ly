@@ -16,7 +16,7 @@
           <div class="remove-margin-top" style="font-size:0.7em;"><p class="remove-margin-top">(If editing, do not add relationships you've already added to your tables. Only add new relationships.)</p></div>
 
           <div class="existing-relations">
-            <p>Existing relationships:<br>
+            <p>Existing relationships (if any):<br>
             <%if @relationships.length > 0%>
               <%@relationships.each do |rel| %>
                 <div id="<%=rel.id%>-rel">
