@@ -201,7 +201,17 @@ end
 
 delete '/:id' do
 
+	table = Table.find(params[:table_id])
+	user = User.find(table.user_id)
+
 	Table.destroy(params[:table_id])
+
+	if user.tables.length < 1
+		all_gone = 1
+	else
+		all_gone = 0
+	end
+	
 	@associations = []
 	
 	if Relationship.where(origin_id: params[:table_id])
@@ -229,7 +239,7 @@ delete '/:id' do
 			end
 	end
 
-	send = {table_id: params[:table_id]}
+	send = {table_id: params[:table_id], all_gone: all_gone}
 	content_type :json
     send.to_json
 
