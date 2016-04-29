@@ -19,6 +19,8 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'url_shortener'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

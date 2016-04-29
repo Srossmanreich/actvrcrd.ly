@@ -89,6 +89,7 @@ table tr {
 .table-name {
   font-size: 1.5em;
   color: red;
+  margin-bottom: 0px;
 }
 
 th, td {
@@ -227,8 +228,12 @@ th, td {
   background-color: white;
 }
 
+.remove-margin{
+  margin: 0px 0px 10px 0px;
+}
+
 .edit-delete{
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 
 .edit-table{
@@ -249,3 +254,16 @@ th, td {
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
+.get-short{
+  color: red;
+}
+
+.get-short:hover{
+  text-decoration: underline;
+}
+
+.short-url{
+  color: blue;
+}
+

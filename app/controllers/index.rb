@@ -68,10 +68,10 @@ post '/:id' do
 end
 
 post '/:id/code' do 
-	id = params[:id]
+	@id = params[:id]
 	assoc_nums = params.keys[-4].split("-")[0].to_i
 
-	@user = User.find_by('identifier = ?',id)
+	@user = User.find_by('identifier = ?',@id)
 	@tables = @user.tables 
 	num_tabs = @tables.count
 
@@ -122,14 +122,14 @@ post '/:id/code' do
 
 	end
 
-	redirect "/#{id}/code"
+		redirect "/#{@id}/code"
 
 end
 
 get '/:id/code' do
-	id = params[:id]
+	@id = params[:id]
 
-	@user = User.find_by('identifier = ?',id)
+	@user = User.find_by('identifier = ?',@id)
 	@tables = @user.tables 
 	@associations = @user.relationships
 
@@ -195,6 +195,33 @@ end
 delete '/:id' do
 
 	Table.destroy(params[:table_id])
+	@associations = []
+	
+	if Relationship.where(origin_id: params[:table_id])
+		Relationship.where(origin_id: params[:table_id]).each do |rel|
+			@associations << rel.id
+		end
+	end
+
+	if Relationship.where(target_id: params[:table_id])
+		Relationship.where(target_id: params[:table_id]).each do |rel|
+			@associations << rel.id
+		end
+	end
+
+	if Relationship.where(channel_id: params[:table_id])
+		Relationship.where(channel_id: params[:table_id]).each do |rel|
+			@associations << rel.id
+		end
+	end
+
+	if @associations.length > 0
+		@remove = @associations.uniq
+			@remove.each do |rel_id|
+				Relationship.destroy(rel_id)
+			end
+	end
+
 	send = {table_id: params[:table_id]}
 	content_type :json
     send.to_json
