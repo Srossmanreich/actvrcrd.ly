@@ -19,6 +19,12 @@ get '/:id' do
 		@tables = []
 	end
 
+	if user.relationships
+		@relationships = user.relationships
+	else
+		@relationships = []
+	end
+
 	erb :index
 end
 
@@ -73,16 +79,20 @@ post '/:id/code' do
 	if params.keys.length > 3
 		assoc_nums = params.keys[-4].split("-")[0].to_i
 		else
-		assoc_nums = 1
+		assoc_nums = 0
 	end
 
 	@user = User.find_by('identifier = ?',@id)
 	@tables = @user.tables 
 	num_tabs = @tables.count
 
-	array = Array(1..assoc_nums)
+	if assoc_nums >= 1
+		array = Array(1..assoc_nums)
+	else
+		array = []
+	end
 
-	if array.length > 1
+	if array.length >= 1
 		array.each do |num|
 
 			ori_key = "#{num}-origin"
@@ -112,8 +122,8 @@ post '/:id/code' do
 
 	@associations = @user.relationships
 
-	if @associations.find_by(assoc: "has_belongs_many")
-		@habtm_assoc = @associations.where("assoc = ?", "has_belongs_many")
+	if @associations.find_by(assoc: "has and belongs to many")
+		@habtm_assoc = @associations.where("assoc = ?", "has and belongs to many")
 		@habtm_assoc.each do |rel|
 			origin_t = @tables.find(rel.origin_id)
 			target_t = @tables.find(rel.target_id)
@@ -204,13 +214,26 @@ delete '/:id' do
 	table = Table.find(params[:table_id])
 	user = User.find(table.user_id)
 
-	Table.destroy(params[:table_id])
+	table1=nil
+	table2=nil
 
-	if user.tables.length < 1
-		all_gone = 1
-	else
-		all_gone = 0
+	if table.name.include?("_")
+		table_array = table.name.split("_")
+		table1=table_array[0]
+		table2=table_array[1]
 	end
+
+	@to_delete = []
+
+	user.relationships.each do |rel|
+		if Table.find(rel.origin_id).name == table1 && Table.find(rel.target_id).name == table2 && rel.assoc == "has and belongs to many"
+			@to_delete << rel.id
+		end
+	end
+
+	@remove = @to_delete.uniq
+
+	Table.destroy(params[:table_id])
 	
 	@associations = []
 	
@@ -233,13 +256,26 @@ delete '/:id' do
 	end
 
 	if @associations.length > 0
-		@remove = @associations.uniq
-			@remove.each do |rel_id|
-				Relationship.destroy(rel_id)
-			end
+		@associations.each do |rel_id|
+			@remove << rel_id
+		end
 	end
 
-	send = {table_id: params[:table_id], all_gone: all_gone}
+	@remove_uniq = @remove.uniq
+	
+	if @remove_uniq.length > 0
+		@remove_uniq.each do |rel_id|
+			Relationship.destroy(rel_id)
+		end
+	end
+
+	if user.tables.length == 0
+		all_gone = 1
+	else
+		all_gone = 0
+	end
+
+	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove}
 	content_type :json
     send.to_json
 

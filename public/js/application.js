@@ -76,7 +76,10 @@ $(document).ready(function() {
 		})
 
 		request.done(function(data) {
+
 			$('#delete-table-'+data.table_id).parent().parent().empty();
+
+			$('#'+data.remove_ass+"-rel").empty();
 			
 			if(data.all_gone === 1){
 				$('.no-tables').show();
