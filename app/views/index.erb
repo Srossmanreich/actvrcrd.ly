@@ -12,7 +12,8 @@
 
         <form class="associations-form" method="POST" action="/<%=@id%>/code">
           <h3>Before you get your code ...</h3>
-          <p>I need to know how your tables relate to each other.</p>
+          <p class="remove-margin-bottom">I need to know how your tables relate to each other.</p>
+          <div class="remove-margin-top" style="font-size:0.7em;"><p class="remove-margin-top">(If editing, do not add relationships you've already added to your tables. Only add new relationships.)</p></div>
 
           <div class="relation-items">
           </div>
@@ -68,7 +69,7 @@
       <p>Table name (e.g., Users, Votes)<br>
       --> keep it simple, capitalized, and plural:</p>
       <p><input type="text" name="tablename"></p>
-      <p>Don't add an ID for your table -- it will come as a default</p>
+      <p>Don't add an ID for your table -- it will come as a default. BUT do add foreign keys (following the convention of ending in '_id') and mark them as such via the foreign_key checkbox.</p>
 
       <p><input class="submit-tables get-code" type="submit" value="Submit Table"></p>
       

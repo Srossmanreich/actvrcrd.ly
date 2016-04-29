@@ -232,6 +232,14 @@ th, td {
   margin: 0px 0px 10px 0px;
 }
 
+.remove-margin-bottom{
+  margin-bottom: 0px;
+}
+
+.remove-margin-top{
+  margin-top: 0px;
+}
+
 .edit-delete{
   font-size: 0.7em;
 }
