@@ -122,8 +122,8 @@ post '/:id/code' do
 
 	@associations = @user.relationships
 
-	if @associations.find_by(assoc: "has_and_belongs_to_many")
-		@habtm_assoc = @associations.where("assoc = ?", "has_and_belongs_to_many")
+	if @associations.find_by(assoc: "has and belongs to many")
+		@habtm_assoc = @associations.where("assoc = ?", "has and belongs to many")
 		@habtm_assoc.each do |rel|
 			origin_t = @tables.find(rel.origin_id)
 			target_t = @tables.find(rel.target_id)
@@ -226,7 +226,7 @@ delete '/:id' do
 	@to_delete = []
 
 	user.relationships.each do |rel|
-		if Table.find(rel.origin_id).name == table1 && Table.find(rel.target_id).name == table2 && rel.assoc == "has_and_belongs_to_many"
+		if Table.find(rel.origin_id).name == table1 && Table.find(rel.target_id).name == table2 && rel.assoc == "has and belongs to many"
 			@to_delete << rel.id
 		end
 	end
@@ -234,12 +234,6 @@ delete '/:id' do
 	@remove = @to_delete.uniq
 
 	Table.destroy(params[:table_id])
-
-	if user.tables.length < 1
-		all_gone = 1
-	else
-		all_gone = 0
-	end
 	
 	@associations = []
 	
@@ -273,6 +267,12 @@ delete '/:id' do
 		@remove_uniq.each do |rel_id|
 			Relationship.destroy(rel_id)
 		end
+	end
+
+	if user.tables.length == 0
+		all_gone = 1
+	else
+		all_gone = 0
 	end
 
 	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove}

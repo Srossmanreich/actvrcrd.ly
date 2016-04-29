@@ -76,8 +76,6 @@ $(document).ready(function() {
 		})
 
 		request.done(function(data) {
-			
-			console.log(data.remove_ass);
 
 			$('#delete-table-'+data.table_id).parent().parent().empty();
 

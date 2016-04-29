@@ -22,13 +22,13 @@ The product includes basic css and forms and a unique identifier for your output
 
 * User experience
 	* Ability to update existing tables before getting code
-	* Upfront explanations of different table types
 	* Automatic file creation
 	* Better visual interface for schema design
-	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
 	* Prevent user from doing impossible things (re: associations)
 	* Add user guide (tips and tricks for using this tool)
+	* Upfront explanations of different table types
 	* Remove associations (without deleting tables)
+	* Remove many-to-many table if one of the tables associated with it is deleted
 
 * Active Record functionality
 	* Self Join tables
