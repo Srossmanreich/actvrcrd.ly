@@ -19,6 +19,12 @@ get '/:id' do
 		@tables = []
 	end
 
+	if user.relationships
+		@relationships = user.relationships
+	else
+		@relationships = []
+	end
+
 	erb :index
 end
 

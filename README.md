@@ -28,6 +28,7 @@ The product includes basic css and forms and a unique identifier for your output
 	* Accounts for user input error (e.g., tries to get code before making tables, etc.)
 	* Prevent user from doing impossible things (re: associations)
 	* Add user guide (tips and tricks for using this tool)
+	* Remove associations (without deleting tables)
 
 * Active Record functionality
 	* Self Join tables
