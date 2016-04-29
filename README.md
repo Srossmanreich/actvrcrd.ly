@@ -21,7 +21,6 @@ The product includes basic css and forms and a unique identifier for your output
 ##Planned updates:
 
 * User experience
-	* Unique URL to view and share your code
 	* Ability to update existing tables before getting code
 	* Upfront explanations of different table types
 	* Automatic file creation
@@ -40,6 +39,5 @@ The product includes basic css and forms and a unique identifier for your output
 	* Better CSS?
 	* Improve RESTfulness of routes
 	* Add if xhr / ajax check in routes
-	* Remove Current Table when all the tables are deleted
 
 Want to contribute? Feel free to contact me via GitHub or by email: Srossmanreich@gmail.com
