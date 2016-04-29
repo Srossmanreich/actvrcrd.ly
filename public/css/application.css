@@ -39,6 +39,18 @@ body {
   margin: 30px 50px;
 }
 
+.how-to{
+  margin-bottom: 10px;
+}
+
+.how-to a{
+  text-decoration: none;
+}
+
+.how-to a:hover{
+  text-decoration: underline;
+}
+
 .btn {
   display: flex;
   align-items: center;

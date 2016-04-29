@@ -4,6 +4,11 @@ get '/' do
 	erb :landing
 end
 
+get '/guide' do 
+	@random = SecureRandom.uuid
+	erb :guide
+end
+
 get '/:id' do 
 	@id = params[:id]
 	if session[:identifier] == @id
