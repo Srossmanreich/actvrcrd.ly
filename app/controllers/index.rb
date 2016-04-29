@@ -69,7 +69,12 @@ end
 
 post '/:id/code' do 
 	@id = params[:id]
-	assoc_nums = params.keys[-4].split("-")[0].to_i
+	
+	if params.keys.length > 3
+		assoc_nums = params.keys[-4].split("-")[0].to_i
+		else
+		assoc_nums = 1
+	end
 
 	@user = User.find_by('identifier = ?',@id)
 	@tables = @user.tables 
@@ -77,30 +82,32 @@ post '/:id/code' do
 
 	array = Array(1..assoc_nums)
 
-	array.each do |num|
+	if array.length > 1
+		array.each do |num|
 
-		ori_key = "#{num}-origin"
-		rel_key = "#{num}-rel"
-		tar_key = "#{num}-target"
-		con_key = "#{num}-through"
-		cha_key = "#{num}-channel"
+			ori_key = "#{num}-origin"
+			rel_key = "#{num}-rel"
+			tar_key = "#{num}-target"
+			con_key = "#{num}-through"
+			cha_key = "#{num}-channel"
 
-		origin = params[ori_key]
-		relation = params[rel_key]
-		target = params[tar_key]
-		connector = params[con_key]
-		channel = params[cha_key]
+			origin = params[ori_key]
+			relation = params[rel_key]
+			target = params[tar_key]
+			connector = params[con_key]
+			channel = params[cha_key]
 
-		ori_tab = @tables.find_by(name:origin)
-		tar_tab = @tables.find_by(name:target)
-		
-		if @tables.find_by(name:channel)
-			cha_tab = @tables.find_by(name:channel).id
-		else
-			cha_tab = 0
+			ori_tab = @tables.find_by(name:origin)
+			tar_tab = @tables.find_by(name:target)
+			
+			if @tables.find_by(name:channel)
+				cha_tab = @tables.find_by(name:channel).id
+			else
+				cha_tab = 0
+			end
+
+			Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,connector:connector,channel_id:cha_tab,user_id:@user.id)
 		end
-
-		Relationship.create(origin_id:ori_tab.id,assoc:relation,target_id:tar_tab.id,connector:connector,channel_id:cha_tab,user_id:@user.id)
 	end
 
 	@associations = @user.relationships
