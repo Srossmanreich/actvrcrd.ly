@@ -77,13 +77,26 @@ $(document).ready(function() {
 
 		request.done(function(data) {
 
-			console.log(data);
-
 			$('#delete-table-'+data.table_id).parent().parent().empty();
 
-			if(data.remove_ass.length != 0){
+			if(data.remove_ass.length > 0){
 				for(var i in data.remove_ass){
 					$('#'+data.remove_ass[i]+"-rel").empty();
+				}
+			}
+
+			if(data.tab_update.length > 0){
+				for(var i in data.tab_update){
+					$('#delete-table-'+data.tab_update[i][0].id).parent().parent().empty();
+
+					var template3 = $("#table-diagram").html();
+	      			var content3 = Mustache.render(template3, {tablename: data.tab_update[i][0].name, table_edit: "edit-table-"+data.tab_update[i][0].id, table_delete: "delete-table-"+data.tab_update[i][0].id,tablearray: data.tab_update[i][1]});
+
+	      			$('.fill-out-prompt').prepend(content3);
+
+	      			template3 = ""
+	      			content3 = ""
+
 				}
 			}
 			

@@ -219,6 +219,35 @@ delete '/:id' do
 	table = Table.find(params[:table_id])
 	user = User.find(table.user_id)
 
+	del_id = "#{table.name.downcase.singularize}_id"
+
+	all_col = []
+
+	user.tables.each do |tab|
+		tab.columns.each do |col|
+			all_col << {col_name: col.name, col_id: col.id, tab_id: tab.id}
+		end
+	end
+
+	@del_info = []
+
+	all_col.each do |hash|
+		if hash[:col_name] == del_id
+			@del_info << hash
+		end
+	end
+
+	@tab_to_update = []
+
+	if @del_info.length > 0
+		@del_info.each do |hash|
+			Column.destroy(hash[:col_id])
+			@tab_to_update << [Table.find(hash[:tab_id]),Table.find(hash[:tab_id]).columns]
+		end
+	end
+
+	#Removing associations for deleted habtm tables
+
 	table1=nil
 	table2=nil
 
@@ -238,9 +267,13 @@ delete '/:id' do
 
 	@remove = @to_delete.uniq
 
+	#Remove clicked table
+
 	Table.destroy(params[:table_id])
 	
 	@associations = []
+
+	#Remove associations involving deleted table
 	
 	if Relationship.where(origin_id: params[:table_id])
 		Relationship.where(origin_id: params[:table_id]).each do |rel|
@@ -274,13 +307,17 @@ delete '/:id' do
 		end
 	end
 
-	if user.tables.length == 0
+	user_updated = User.find(user.id)
+
+	if user_updated.tables.length == 0
 		all_gone = 1
 	else
 		all_gone = 0
 	end
 
-	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove_uniq}
+	puts user.tables.length
+
+	send = {table_id: params[:table_id], all_gone: all_gone, remove_ass: @remove_uniq, tab_update: @tab_to_update}
 	content_type :json
     send.to_json
 
