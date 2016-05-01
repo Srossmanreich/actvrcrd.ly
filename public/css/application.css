@@ -66,6 +66,24 @@ body {
   width: 300px;
 }
 
+.how-to-content{
+  max-width: 70%;
+  margin: auto;
+}
+
+.how-to-content ul {
+  list-style: none;
+}
+
+.how-to-content ul li {
+  text-align: center;
+}
+
+.max-width70{
+  max-width: 84%;
+  margin-left: 10px;
+}
+
 /*Index Page*/
 
 .addtable{

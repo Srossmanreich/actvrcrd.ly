@@ -2,10 +2,99 @@
   <h2>How to use actvrcrd.ly</h2>
   <h6 class="center-align"><a href="/">Homepage</a>&nbsp;|&nbsp;<a href="/<%=@random%>">Get Started</a></h6>
 
-  <h3 style="margin: 0px;">Confused where to start with active record?</h3>
-  <h3 style="margin: 0px;">This tool?</h3>
-  <h3 style="margin: 0px;">Basketball?</h3>
-  <h3 style="margin: 0px;">This guide will help you (except with basketball)</h3>
+  <h3 style="margin: 0px;">Confused where to start with this tool? This guide will help!</h3>
+  
+  <div class="how-to-content">
+  <p>Before jumping in, if you have any questions about active record itself, be sure to peruse the active record docs (which are pretty awesome):</p>
+  <ul>
+    <li>Basics: <a href="http://guides.rubyonrails.org/active_record_basics.html">http://guides.rubyonrails.org/active_record_basics.html</a></li>
+    <li>Associations: <a href="http://guides.rubyonrails.org/association_basics.html">http://guides.rubyonrails.org/association_basics.html</a></li>
+  </ul>
+
+  <p>I will use the association examples the active record docs use, so you can see how their examples translate to actvrcrd.ly. Also worth noting: currently everything in actvrcrd.ly follows Active Record convention (which means how you input your information into this tool must follow these conventions as well).</p>
+
+  <p>Before we start getting into associations, I'll review some basics of actvrcrd.ly.</p>
+
+  <p>When you first arrive to the "Get Started" page, you'll see an empty form that looks like this:</p>
+
+  <div class="center-align"><img src="/images/empty_form.png"></div>
+
+  <p>Here you will create your first table. Name your table the plural form of what it holds (this is convention in Active Record). So, for example: Users, Accounts, Customers, Posts, Puppies, etc.</p>
+
+  <p>At the very bottom of the form you'll see another place where you can input information. This is your first column. Name your column (e.g., name, age, ssn, account, etc.) and use the dropdown to select what type of objects this column will hold (e.g., integers, strings, dates, etc.). Then, use the check boxes to tell us a little about the items in that column:</p>
+  
+  <em><ul class="max-width70">
+    <li>Does the column hold foreign keys? (if so, please name the column the lowercase, singularized name of the table the key comes from and end it in '_id' as per convention --> e.g., user_id, account_id, customer_id)</li><br>
+    <li>Does every new object in the table have to have that column filled in (e.g., is presence required?)</li><br>
+    <li>Does any new object have to have a unique value for this row (e.g., a ssn or account_number)?</li><br>
+    <li>Is this column the polymorphic identifier (more on this in associations later)?</li>
+  </ul></em>
+
+  <p>It is likely your tables (or at least some of them) will have more than one column. You can add more columns by pressing the grey "Add a column" button:</p>
+
+  <div class="center-align"><img src="/images/add_col.png"></div>
+
+  <p>Once you are satisfied with your table, submit it using the big red "Submit Table" button:</p>
+
+  <div class="center-align"><img src="/images/sub_tab.png"></div>
+
+  <p>After you do this, your table will appear at the top of the page along with a "Create another table" button, which you can press to add a table:</p>
+
+  <div class="center-align"><img src="/images/create_an.png"></div>
+
+  <p>You may also delete any of your tables at anytime. To do this, simply press the delete link beneath the table's name:</p>
+
+  <div class="center-align"><img src="/images/del_tab.png"></div>
+
+  <p>Once you are satisfied with your tables, you'll need to add associations (the links between them). To do this, press the "Add associations" button at the top of the page:</p>
+
+  <div class="center-align"><img src="/images/add_ass.png"></div>
+
+  <p>When you click this button a popup will appear, prompting you to create associations between your tables:</p>
+
+  <div class="center-align"><img src="/images/ass_mod.png"></div>
+
+  <p>If your tables already have associations (e.g., you've already gotten your code and have since gone back to edit your tables and/or associations), these will appear under existing relationships (in the center of the modal). You can always delete associations from here if you don't like them by clicking the 'delete' link next to the association:</p>
+
+  <div class="center-align"><img src="/images/ex_rel.png"></div>
+
+  <p>You can also add new relationships by pressing the add a relationship icon. When you press this button, dropdowns will appear that allow you to connect your tables to one another:</p>
+
+  <div class="center-align"><img src="/images/add_rel.png"></div>
+
+  <p>You can keep adding relationships (as many as you need) by continuing to press the "Add a relationship" button.</p>
+
+  <p>One thing you may have noticed is that the fourth and fifth dropdowns default to "N/A" --- you will not need to use these dropdowns except in the many-to-many case when you go through a third table (see below for more details on many-to-many with through)</p>
+
+  <p>When you are satisfied with your relationships (and the tables before them), click the "Get your code" button:</p>
+
+  <div class="center-align"><img src="/images/get_code.png"></div>
+
+  <p>You'll be taken to a page with all your model and migration code:</p>
+
+  <div class="center-align"><img src="/images/code_page.png"></div>
+
+  <p>Copy and paste your models and migrations into your relevant files (make sure to actually generate migrations for the migrations). If you don't like what you see (and want to add/remove a table or association), feel fee to hit the "Review or edit your tables" link at the top of the page to go back. You can also get a unique short url for your code page (which will also give you access to the edit page), by clicking the "Click ehre to get a short url" text at the top of the page.</p>
+
+  <p>And those are the basics! Now onto the specific associations guide:</p>
+
+  <h3>1. Has One</h3>
+  <h6 class="center-align">Note: Creating a has one association in actvrcrd.ly will automatically generate the opposite belongs to</h6>
+
+  <p>The active record docs use suppliers and accounts (a supplier has one account --- and, because of this, account belongs to supplier):</p>
+
+  <div class="center-align"><img src="/images/has_one.png"></div>
+
+  <p>To create these tables in actvrcrd.ly, you will need to add one "Suppliers" table with a name column (each table will automatically be given an id) and an "Accounts" table with an account_number column AND a supplier_id column (marked as a foreign key). See the example input below:</p>
+
+  <div class="center-align"><img src="/images/has_one_ex1.png"></div>
+  <div class="center-align"><img src="/images/has_one_ex2.png"></div>
+
+  <p>After these tables are submitted, they will appear like so:</p>
+
+  <div class="center-align"><img src="/images/has_one_ex3.png"></div>
+
+  </div>
 
   <div class="center-align"><img class="sbpete" src="/images/sbpete.jpg"></div>
 
