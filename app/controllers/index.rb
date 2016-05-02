@@ -12,10 +12,14 @@ end
 get '/:id' do 
 	@id = params[:id]
 	if session[:identifier] == @id
+		puts "This is our test for finding user"
+		puts session[:identifier]
 		user = User.find_by(identifier: @id)
 	else
 		session[:identifier] = @id
 		user = User.create(identifier: @id)
+		puts "This is our test for creating user"
+		puts session[:identifier]
 	end
 
 	if user.tables
