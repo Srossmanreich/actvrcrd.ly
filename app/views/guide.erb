@@ -123,24 +123,48 @@
   <p>And finally we get our code!</p>
 
   <h3>3. Has Many Through</h3>
-  <h6 class="center-align">Note: This is for a many-to-one relationship - many-to-many will be covered next</h6>
+  <h6 class="center-align">Note: This is one of two options we can use for a many-to-many relationship. Second option below. We can also replace 'has many' with 'has one' in this example to illustrate a one-to-many or one-to-one relationship using 'through'</h6>
 
-  <p>The active record docs use customers and orders (a customer has many orders --- and, because of this, orders belongs to customers):</p>
+  <p>The active record docs use physicians, patients, and appointments (both physicians and patients have many appointments AND they each also have many of each other through appointments):</p>
 
-  <div class="center-align"><img src="/images/has_many_ex1.png"></div>
+  <div class="center-align"><img src="/images/mtmtex1.png"></div>
 
-  <p>To create these tables in actvrcrd.ly, you will need to add one "Customers" table with a name column (each table will automatically be given an id) and an "Orders" table with an order_date column AND a customer_id column (marked as a foreign key). See the example input below:</p>
+  <p>To create these tables in actvrcrd.ly, you will need to add "Physicians" and "Patients" tables, each with a name column (each table will automatically be given an id) and an "Appointments" table with an appointment_date column AND both a physician_id column and patient_id column (marked as foreign keys). See the example input below:</p>
 
-  <div class="center-align"><img src="/images/has_many_ex2.png"></div>
-  <div class="center-align"><img src="/images/has_many_ex3.png"></div>
+  <div class="center-align"><img src="/images/mtmtex2.png"></div>
+  <div class="center-align"><img src="/images/mtmtex3.png"></div>
+  <div class="center-align"><img src="/images/mtmtex4.png"></div>
 
   <p>After these tables are submitted, they will appear like so:</p>
 
-  <div class="center-align"><img src="/images/has_many_ex4.png"></div>
+  <div class="center-align"><img src="/images/mtmtex5.png"></div>
 
-  <p>Next we'll need to create the 'has many' association between these two tables:</p>
+  <p>Next we'll need to create the 'has many' association between these two tables (note for patients has many physicians and vice versa, we must go THROUGH the appointments table):</p>
 
-  <div class="center-align"><img src="/images/has_many_ex5.png"></div>
+  <div class="center-align"><img src="/images/mtmtex6.png"></div>
+
+  <p>And finally we get our code!</p>
+
+  <h3>4. Has And Belongs To Many</h3>
+  <h6 class="center-align">Note: This is the second option for a many-to-many relationship and will automatically create a join table for you.</h6>
+
+  <p>The active record docs use physicians, patients, and appointments (both physicians and patients have many appointments AND they each also have many of each other through appointments):</p>
+
+  <div class="center-align"><img src="/images/mtmtex1.png"></div>
+
+  <p>To create these tables in actvrcrd.ly, you will need to add "Physicians" and "Patients" tables, each with a name column (each table will automatically be given an id) and an "Appointments" table with an appointment_date column AND both a physician_id column and patient_id column (marked as foreign keys). See the example input below:</p>
+
+  <div class="center-align"><img src="/images/mtmtex2.png"></div>
+  <div class="center-align"><img src="/images/mtmtex3.png"></div>
+  <div class="center-align"><img src="/images/mtmtex4.png"></div>
+
+  <p>After these tables are submitted, they will appear like so:</p>
+
+  <div class="center-align"><img src="/images/mtmtex5.png"></div>
+
+  <p>Next we'll need to create the 'has many' association between these two tables (note for patients has many physicians and vice versa, we must go THROUGH the appointments table):</p>
+
+  <div class="center-align"><img src="/images/mtmtex6.png"></div>
 
   <p>And finally we get our code!</p>
 
