@@ -39,6 +39,18 @@ body {
   margin: 30px 50px;
 }
 
+.how-to{
+  margin-bottom: 10px;
+}
+
+.how-to a{
+  text-decoration: none;
+}
+
+.how-to a:hover{
+  text-decoration: underline;
+}
+
 .btn {
   display: flex;
   align-items: center;
@@ -46,6 +58,30 @@ body {
   margin: 10px 350px;
   max-width: 15%;
   margin: auto;
+}
+
+/*How-to page*/
+
+.sbpete{
+  width: 300px;
+}
+
+.how-to-content{
+  max-width: 70%;
+  margin: auto;
+}
+
+.how-to-content ul {
+  list-style: none;
+}
+
+.how-to-content ul li {
+  text-align: center;
+}
+
+.max-width70{
+  max-width: 84%;
+  margin-left: 10px;
 }
 
 /*Index Page*/
