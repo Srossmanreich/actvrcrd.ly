@@ -25,9 +25,8 @@ The product includes basic css and forms and a unique identifier for your output
 	* Automatic file creation
 	* Better visual interface for schema design
 	* Prevent user from doing impossible things (re: associations)
-	* Add user guide (tips and tricks for using this tool)
-	* Upfront explanations of different table types
 	* Remove many-to-many table if one of the tables associated with it is deleted
+	* Remove disappearing table bug
 
 * Active Record functionality
 	* Self Join tables
@@ -38,4 +37,4 @@ The product includes basic css and forms and a unique identifier for your output
 	* Improve RESTfulness of routes
 	* Add if xhr / ajax check in routes
 
-Want to contribute? Feel free to contact me via GitHub or by email: Srossmanreich@gmail.com
+Want to contribute? Feel free to contact me via <a href="https://github.com/Srossmanreich/actvrcrd.ly">GitHub</a> or by email: Srossmanreich@gmail.com

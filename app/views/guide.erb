@@ -42,7 +42,7 @@
 
   <div class="center-align"><img src="/images/create_an.png"></div>
 
-  <p>You may also delete any of your tables at anytime. To do this, simply press the delete link beneath the table's name:</p>
+  <p>You may also delete any of your tables at anytime. To do this, simply press the delete link beneath the table's name (note: deleting a table will delete any associations connected to it as well as remove any foreign keys in other tables linked to the table deleted):</p>
 
   <div class="center-align"><img src="/images/del_tab.png"></div>
 
@@ -79,7 +79,7 @@
   <p>And those are the basics! Now onto the specific associations guide:</p>
 
   <h3>1. Has One</h3>
-  <h6 class="center-align">Note: Creating a has one association in actvrcrd.ly will automatically generate the opposite belongs to</h6>
+  <h6 class="center-align">Note: Creating a has one association (and most other has relationships) in actvrcrd.ly will automatically generate the opposite belongs to</h6>
 
   <p>The active record docs use suppliers and accounts (a supplier has one account --- and, because of this, account belongs to supplier):</p>
 
@@ -93,6 +93,58 @@
   <p>After these tables are submitted, they will appear like so:</p>
 
   <div class="center-align"><img src="/images/has_one_ex3.png"></div>
+
+  <p>Next we'll need to create the 'has one' association between these two tables:</p>
+
+  <div class="center-align"><img src="/images/has_one_ex4.png"></div>
+
+  <p>And finally we get our code!</p>
+
+  <h3>2. Has Many</h3>
+  <h6 class="center-align">Note: This is for a many-to-one relationship - many-to-many will be covered next</h6>
+
+  <p>The active record docs use customers and orders (a customer has many orders --- and, because of this, orders belongs to customers):</p>
+
+  <div class="center-align"><img src="/images/has_many_ex1.png"></div>
+
+  <p>To create these tables in actvrcrd.ly, you will need to add one "Customers" table with a name column (each table will automatically be given an id) and an "Orders" table with an order_date column AND a customer_id column (marked as a foreign key). See the example input below:</p>
+
+  <div class="center-align"><img src="/images/has_many_ex2.png"></div>
+  <div class="center-align"><img src="/images/has_many_ex3.png"></div>
+
+  <p>After these tables are submitted, they will appear like so:</p>
+
+  <div class="center-align"><img src="/images/has_many_ex4.png"></div>
+
+  <p>Next we'll need to create the 'has many' association between these two tables:</p>
+
+  <div class="center-align"><img src="/images/has_many_ex5.png"></div>
+
+  <p>And finally we get our code!</p>
+
+  <h3>3. Has Many Through</h3>
+  <h6 class="center-align">Note: This is for a many-to-one relationship - many-to-many will be covered next</h6>
+
+  <p>The active record docs use customers and orders (a customer has many orders --- and, because of this, orders belongs to customers):</p>
+
+  <div class="center-align"><img src="/images/has_many_ex1.png"></div>
+
+  <p>To create these tables in actvrcrd.ly, you will need to add one "Customers" table with a name column (each table will automatically be given an id) and an "Orders" table with an order_date column AND a customer_id column (marked as a foreign key). See the example input below:</p>
+
+  <div class="center-align"><img src="/images/has_many_ex2.png"></div>
+  <div class="center-align"><img src="/images/has_many_ex3.png"></div>
+
+  <p>After these tables are submitted, they will appear like so:</p>
+
+  <div class="center-align"><img src="/images/has_many_ex4.png"></div>
+
+  <p>Next we'll need to create the 'has many' association between these two tables:</p>
+
+  <div class="center-align"><img src="/images/has_many_ex5.png"></div>
+
+  <p>And finally we get our code!</p>
+
+
 
   </div>
 
