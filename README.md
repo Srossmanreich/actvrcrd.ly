@@ -1,4 +1,8 @@
 #actvrcrd.ly
+
+[link to app](https://afternoon-wave-94127.herokuapp.com/)
+NOTE: the heroku app is missing a lot of nice-to-have functionality (mostly around reviewing and editing existing tables -- I am working on fixing this now)
+
 An Active Record development tool that helps you translate your schema design to ruby code.
 
 ##Version 1.0 (MVP)
