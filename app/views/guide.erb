@@ -148,32 +148,53 @@
   <h3>4. Has And Belongs To Many</h3>
   <h6 class="center-align">Note: This is the second option for a many-to-many relationship and will automatically create a join table for you.</h6>
 
-  <p>The active record docs use physicians, patients, and appointments (both physicians and patients have many appointments AND they each also have many of each other through appointments):</p>
+  <p>The active record docs use assemblies and parts (both have many of the other):</p>
 
-  <div class="center-align"><img src="/images/mtmtex1.png"></div>
+  <div class="center-align"><img src="/images/habtmex1.png"></div>
 
-  <p>To create these tables in actvrcrd.ly, you will need to add "Physicians" and "Patients" tables, each with a name column (each table will automatically be given an id) and an "Appointments" table with an appointment_date column AND both a physician_id column and patient_id column (marked as foreign keys). See the example input below:</p>
+  <p>We only need to create the assemblies and parts tables for this example. Actvrcrd.ly will automatically create our join table (assemblies_parts) when we set the proper many-to-many relationship. To create the assemblies and parts tables, you will need to add an "Assemblies" table with a name column and a "Parts" table with a part_number column (each table will automatically be given an id). Notice there are no foreign keys in either table. See the example input below:</p>
 
-  <div class="center-align"><img src="/images/mtmtex2.png"></div>
-  <div class="center-align"><img src="/images/mtmtex3.png"></div>
-  <div class="center-align"><img src="/images/mtmtex4.png"></div>
+  <div class="center-align"><img src="/images/habtmex2.png"></div>
+  <div class="center-align"><img src="/images/habtmex3.png"></div>
 
   <p>After these tables are submitted, they will appear like so:</p>
 
-  <div class="center-align"><img src="/images/mtmtex5.png"></div>
+  <div class="center-align"><img src="/images/habtmex4.png"></div>
 
-  <p>Next we'll need to create the 'has many' association between these two tables (note for patients has many physicians and vice versa, we must go THROUGH the appointments table):</p>
+  <p>Next we'll need to create the has many association (in this case a 'has and belongs to many' relationship) between these two tables:</p>
 
-  <div class="center-align"><img src="/images/mtmtex6.png"></div>
+  <div class="center-align"><img src="/images/habtmex5.png"></div>
+
+  <p>And finally we get our code! In this case, you'll notice that while there are only two models (reflecting the two tables you created), there are three migrations. A third table (your join table) has been created. If you go back to review your tables (using the link at the top of the page), you'll see the third table in your list of current tables:</p>
+
+  <div class="center-align"><img src="/images/habtmex6.png"></div>
+
+  <h3>5. Polymorphic Association</h3>
+  <h6 class="center-align">Note: This isn't 'really' a type of relationship in the way we've seen before. Polymorphic associations are used when one table can relate to other tables in the same way. Example: On StackOverflow, a comment might belong to a question, an answer, or even another comment. Each comment will belong to one out of the three, but not more than one. But, because questions, answers, and comments are all different things, we cannot simply pin a comment to an id of one without also stating its time. We'll need a special foreign key for this as you'll see below.</h6>
+
+  <p>The active record docs use employees, products, and pictures (both employees and products have many pictures, in that many pictures are taken of each):</p>
+
+  <div class="center-align"><img src="/images/polyex1.png"></div>
+
+  <p>To create these tables in actvrcrd.ly, you will need to add "Employees" and "Products" tables, each with a name column (each table will automatically be given an id) and a "Pictures" table with a name column AND a special foreign key that must describe both products and employees (so instead of both a product_id and an employee_id - with one always being blank as a picture can only be taken of one or the other - we'll add one foreign key that can describe both and tell actvrcrd.ly to mark it as such with the polymorphic option). Convention calls for this special foreign key to be a reference type and end in 'able'. See the example input below:</p>
+
+  <div class="center-align"><img src="/images/polyex2.png"></div>
+  <div class="center-align"><img src="/images/polyex3.png"></div>
+  <div class="center-align"><img src="/images/polyex4.png"></div>
+
+  <p>After these tables are submitted, they will appear like so:</p>
+
+  <div class="center-align"><img src="/images/polyex5.png"></div>
+
+  <p>Next we'll need to create the polymorphic belong_to association between our table with the polymorphic type and the related tables:</p>
+
+  <div class="center-align"><img src="/images/polyex6.png"></div>
 
   <p>And finally we get our code!</p>
 
 
-
   </div>
 
-  <div class="center-align"><img class="sbpete" src="/images/sbpete.jpg"></div>
-
-  
+  <p><a href="/<%=@random%>">Now get started!</a></p>
 
 </div>
