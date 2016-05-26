@@ -1,7 +1,6 @@
 #actvrcrd.ly
 
-[link to app](http://actvrcrdly.herokuapp.com/)
-NOTE: the heroku app is missing a lot of nice-to-have functionality (mostly around reviewing and editing existing tables -- I am working on fixing this now)
+[Check out the app!](http://actvrcrdly.herokuapp.com/)
 
 An Active Record development tool that helps you translate your schema design to ruby code.
 
